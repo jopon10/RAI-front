@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:controls="clr-namespace:RAI.Controls" 
         mc:Ignorable="d"
-        Title="Fazenda" Height="450" Width="800" Loaded="WindowBase_Loaded">
+        Title="Fazenda" Height="450" Width="400" Loaded="WindowBase_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

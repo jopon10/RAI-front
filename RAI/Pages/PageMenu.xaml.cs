@@ -1,6 +1,8 @@
 ﻿using Telerik.Windows.Controls.MaterialControls;
-using RAI.Pages.Cadastros.Proprietarios;
 using System.Collections.ObjectModel;
+using RAI.Pages.Cadastros.Usuarios;
+using RAI.Pages.Cadastros.Fazendas;
+using RAI.Pages.Cadastros.Locais;
 using System.Collections.Generic;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Threading;
@@ -12,9 +14,6 @@ using System.Windows;
 using System.Linq;
 using RAI.API;
 using System;
-using RAI.Pages.Cadastros.Fazendas;
-using RAI.Pages.Locais;
-using RAI.Pages.Cadastros.Usuarios;
 
 namespace RAI.Pages
 {
@@ -91,7 +90,7 @@ namespace RAI.Pages
             {
                 //new NavigationViewItemModel() { Title = "Proprietários" , IsEnabled = Helper.user.proprietarios, page = new PageProprietarios() },
                 new NavigationViewItemModel() { Title = "Fazendas", IsEnabled = Helper.user.fazendas, page = new PageFazendas() },
-                new NavigationViewItemModel() { Title = "Locais" , IsEnabled = Helper.user.locais, page = new PageLocais() },
+                new NavigationViewItemModel() { Title = "Talhões" , IsEnabled = Helper.user.locais, page = new PageLocais() },
                 new NavigationViewItemModel() { Title = "Usuários", IsEnabled = Helper.user.usuarios, page = new PageUsuarios() },
             };
             if (cadastros != null && !itemsMenu.Select(s => s.Title).Contains(cadastros.Title))

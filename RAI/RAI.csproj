@@ -184,19 +184,19 @@
     <Compile Include="Pages\Cadastros\Usuarios\PageUsuarios.xaml.cs">
       <DependentUpon>PageUsuarios.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Locais\PageLocais.xaml.cs">
+    <Compile Include="Pages\Cadastros\Locais\PageLocais.xaml.cs">
       <DependentUpon>PageLocais.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Locais\PageLocalInclude.xaml.cs">
+    <Compile Include="Pages\Cadastros\Locais\PageLocalInclude.xaml.cs">
       <DependentUpon>PageLocalInclude.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Locais\PageLocalMapeamento.xaml.cs">
+    <Compile Include="Pages\Cadastros\Locais\PageLocalMapeamento.xaml.cs">
       <DependentUpon>PageLocalMapeamento.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Locais\ReportLocais.cs">
+    <Compile Include="Pages\Cadastros\Locais\ReportLocais.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Pages\Locais\ReportLocais.Designer.cs">
+    <Compile Include="Pages\Cadastros\Locais\ReportLocais.Designer.cs">
       <DependentUpon>ReportLocais.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageLogin.xaml.cs">
@@ -271,15 +271,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Locais\PageLocais.xaml">
+    <Page Include="Pages\Cadastros\Locais\PageLocais.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Locais\PageLocalInclude.xaml">
+    <Page Include="Pages\Cadastros\Locais\PageLocalInclude.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Locais\PageLocalMapeamento.xaml">
+    <Page Include="Pages\Cadastros\Locais\PageLocalMapeamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -313,7 +313,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Pages\Locais\ReportLocais.resx">
+    <EmbeddedResource Include="Pages\Cadastros\Locais\ReportLocais.resx">
       <DependentUpon>ReportLocais.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ReportBase.resx">

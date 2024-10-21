@@ -31,20 +31,6 @@ namespace RAI.ViewModel
         public bool inativo { get; set; }
 
         public int? tipo_local { get; set; }
-        public string tipo_local_tela
-        {
-            get
-            {
-                switch (tipo_local)
-                {
-                    case 0: return "Lavoura";
-                    case 3: return "Benfeitoria";
-                    case 4: return "Outro";
-
-                    default: return "";
-                };
-            }
-        }
 
         public string coordenadas { get; set; }
         public bool mapeado { get; set; }

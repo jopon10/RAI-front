@@ -11,7 +11,7 @@ using System.Linq;
 using RAI.API;
 using System;
 
-namespace RAI.Pages.Locais
+namespace RAI.Pages.Cadastros.Locais
 {
     public partial class PageLocalMapeamento : WindowBase
     {

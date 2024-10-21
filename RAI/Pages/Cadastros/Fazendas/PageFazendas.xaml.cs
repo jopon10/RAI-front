@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using RAI.Pages.Cadastros.Locais;
+using System.Collections.Generic;
 using System.Windows.Controls;
-using RAI.Pages.Locais;
 using System.Windows;
 using RAI.API;
 using System;

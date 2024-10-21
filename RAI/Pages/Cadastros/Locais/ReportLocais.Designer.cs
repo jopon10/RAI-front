@@ -1,4 +1,4 @@
-namespace RAI.Pages.Locais
+namespace RAI.Pages.Cadastros.Locais
 {
     partial class ReportLocais
     {

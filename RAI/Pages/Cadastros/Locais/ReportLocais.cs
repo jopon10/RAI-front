@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using RAI.ViewModel;
 
-namespace RAI.Pages.Locais
+namespace RAI.Pages.Cadastros.Locais
 {
     public partial class ReportLocais : ReportBase
     {

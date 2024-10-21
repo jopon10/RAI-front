@@ -7,7 +7,7 @@ using System.Linq;
 using RAI.API;
 using System;
 
-namespace RAI.Pages.Locais
+namespace RAI.Pages.Cadastros.Locais
 {
     public partial class PageLocalInclude : WindowBase
     {
@@ -35,7 +35,6 @@ namespace RAI.Pages.Locais
 
             if (local != null)
             {
-                if (local.tipo_local != null) cbTipoLocal.SelectedIndex = (int)local.tipo_local;
                 txtLocal.Text = local.nome;
 
                 cbCulturas.SelectedValue = local.cultura_id;
@@ -53,24 +52,10 @@ namespace RAI.Pages.Locais
             else
             {
                 local = new Local();
-                cbTipoLocal.Focus();
+                txtLocal.Focus();
             }
 
             btGravar.IsLoading(false);
-        }
-
-        private void cbTipoLocal_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cbTipoLocal.SelectedIndex == 0)
-            {
-                gridLavoura.Visibility = Visibility.Visible;
-                MaterialDesignThemes.Wpf.HintAssist.SetHint(d1, "Data do Plantio");
-            }
-            else
-            {
-                gridLavoura.Visibility = Visibility.Collapsed;
-                MaterialDesignThemes.Wpf.HintAssist.SetHint(d1, "Data da Edificação");
-            }
         }
 
         private void cbCulturas_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -110,12 +95,6 @@ namespace RAI.Pages.Locais
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (cbTipoLocal.SelectedValue == null)
-            {
-                cbTipoLocal.Focus();
-                return;
-            }
-
             if (txtLocal.Text.Trim().Length == 0)
             {
                 txtLocal.Focus();
@@ -140,55 +119,42 @@ namespace RAI.Pages.Locais
                 return;
             }
 
-            if (cbTipoLocal.SelectedIndex == 0)
+            if (txtHectares.Text != "" && !txtHectares.Text.IsNumeric())
             {
-                if (txtHectares.Text != "" && !txtHectares.Text.IsNumeric())
-                {
-                    txtHectares.Focus();
-                    return;
-                }
+                txtHectares.Focus();
+                return;
+            }
 
-                if (txtPlantas.Text != "" && !txtPlantas.Text.IsNumeric())
-                {
-                    txtPlantas.Focus();
-                    return;
-                }
+            if (txtPlantas.Text != "" && !txtPlantas.Text.IsNumeric())
+            {
+                txtPlantas.Focus();
+                return;
             }
 
             try
             {
                 btGravar.IsLoading(true);
 
-                local.tipo_local = cbTipoLocal.SelectedIndex;
+                local.tipo_local = 0;
                 local.nome = txtLocal.Text;
                 local.codigo = "1";
                 local.cultura_id = cbCulturas.SelectedValue.GetValueOrNull();
                 local.fazenda_id = cbFazendas.SelectedValue.GetValueOrNull();
                 local.variedade_id = cbVariedades.SelectedValue.GetValueOrNull();
 
-                if (cbTipoLocal.SelectedIndex == 0)
-                {
-                    local.hectares = txtHectares.Text.ToDecimal();
+                local.hectares = txtHectares.Text.ToDecimal();
 
-                    local.plantas = txtPlantas.Text.ToIntOrNull();
+                local.plantas = txtPlantas.Text.ToIntOrNull();
 
-                    if (txtEspacamentoLinha.Text.IsNumeric())
-                        local.espacamento_linha = txtEspacamentoLinha.Text.ToDecimal();
-                    else
-                        local.espacamento_linha = null;
-
-                    if (txtEspacamentoPlanta.Text.IsNumeric())
-                        local.espacamento_planta = txtEspacamentoPlanta.Text.ToDecimal();
-                    else
-                        local.espacamento_planta = null;
-                }
+                if (txtEspacamentoLinha.Text.IsNumeric())
+                    local.espacamento_linha = txtEspacamentoLinha.Text.ToDecimal();
                 else
-                {
-                    local.hectares = null;
-                    local.plantas = null;
                     local.espacamento_linha = null;
+
+                if (txtEspacamentoPlanta.Text.IsNumeric())
+                    local.espacamento_planta = txtEspacamentoPlanta.Text.ToDecimal();
+                else
                     local.espacamento_planta = null;
-                }
 
                 local.data_plantio = d1.SelectedDate;
                 local.inativo = optInativo.IsChecked.Value;
