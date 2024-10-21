@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="RAI.Pages.Cadastros.Usuarios.PageUsuarios"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RAI.Pages.Cadastros.Usuarios"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             xmlns:my="clr-namespace:RAI.Controls" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button x:Name="btNovo" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="150" Click="btNovo_Click">
+                Novo Usuário
+            </Button>
+
+            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}">
+                <StackPanel Width="150">
+                    <Button x:Name="btInativos" Content="Usuários Inativos" Click="btInativos_Click"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+
+            <ProgressBar x:Name="pb" Visibility="Hidden" Margin="10,0,0,0" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        </StackPanel>
+
+        <my:PonGrid x:Name="grid" Grid.Row="1" LeftFrozenColumnCount="3">
+            <telerik:RadGridView.Columns>
+                <my:ButtonColumnEdit MinWidth="60" MaxWidth="60" Header="" CustomClick="ButtonColumnEditUser_CustomClick"/>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding nome}" Width="180" Header="Nome" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding email}" Width="250" Header="Email" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding admin}" Width="85"  Header="Admin" ShowFieldFilters="False" ShowFilterButton="False"/>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding fazendas}" Width="85" Header="Fazendas" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding locais}" Width="85" Header="Locais" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding usuarios}" Width="85" Header="Usuarios" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
+            </telerik:RadGridView.Columns>
+        </my:PonGrid>
+
+        <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snack" Grid.Row="1"/>
+
+        <Rectangle x:Name="ret" Fill="Black" Opacity="0.5" Visibility="Collapsed" Grid.RowSpan="2"/>
+    </Grid>
+</UserControl>

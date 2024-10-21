@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="RAI.Pages.Cadastros.Fazendas.PageFazendas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RAI.Pages.Cadastros.Fazendas"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             xmlns:my="clr-namespace:RAI.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button x:Name="btNovo" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="150" Click="btNovo_Click">
+                Nova Fazenda
+            </Button>
+
+            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}">
+                <StackPanel Width="Auto">
+                    <Button x:Name="btInativas" Content="Fazendas Inativas" Click="btInativas_Click"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+
+            <ProgressBar x:Name="pb" Visibility="Hidden" Margin="10,0,0,0"  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        </StackPanel>
+
+        <my:PonGrid x:Name="grid" Grid.Row="1" ShowColumnFooters="True">
+            <telerik:RadGridView.Columns>
+                <my:ButtonColumnEdit Header="" MinWidth="60" MaxWidth="60" CustomClick="ButtonColumnEdit_CustomClick"/>
+                <my:ButtonColumnShow x:Name="btMapa" MinWidth="60" MaxWidth="60" IconKind="Earth" ToolTip="Visualizar Mapa da Fazenda" CustomClick="btMapa_CustomClick"/>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding nome}" Width="250" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding estado}" Width="80" Header="Estado" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding cidade}" Width="180" Header="Cidade" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding hectares, StringFormat=\{0:N2\}}" Header="Total Hectares" HeaderTextWrapping="Wrap" Width="100" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction ResultFormatString="{}{0:N2}" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding qtde_locais, StringFormat=\{0:N0\}}" Header="Qtde Lavouras" Width="100" HeaderTextWrapping="Wrap" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction ResultFormatString="{}{0:N0}" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+
+                <my:ButtonColumnDelete Header="" MinWidth="60" MaxWidth="60" IsReadOnly="False" DeleteClick="ButtonColumnDelete_DeleteClick"/>
+
+            </telerik:RadGridView.Columns>
+        </my:PonGrid>
+
+        <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snack" Grid.Row="1"/>
+
+        <Rectangle x:Name="ret" Fill="Black" Opacity="0.5" Visibility="Collapsed" Grid.RowSpan="2"/>
+    </Grid>
+</UserControl>

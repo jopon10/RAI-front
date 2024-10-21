@@ -1,0 +1,116 @@
+﻿<controls:WindowBase x:Class="RAI.Pages.Cadastros.Fazendas.PageFazendaInclude"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RAI.Pages.Cadastros.Fazendas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:controls="clr-namespace:RAI.Controls" 
+        mc:Ignorable="d"
+        Title="Fazenda" Height="450" Width="800" Loaded="WindowBase_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBox x:Name="txtNome" Margin="10,5,10,0" MaxLength="100" materialDesign:HintAssist.Hint="Nome" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtCep" Margin="10,5,10,0" MaxLength="8" materialDesign:HintAssist.Hint="Cep" LostFocus="txtCep_LostFocus" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <ComboBox
+                    x:Name="cbEstados"
+                    Margin="10,5,5,0"
+                    DisplayMemberPath="sigla"
+                    SelectedValuePath="id"
+                    materialDesign:HintAssist.Hint="Estado"
+                    SelectionChanged="cbEstados_SelectionChanged"
+                    IsEditable="True"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+
+                <ComboBox
+                    x:Name="cbCidades"
+                    Margin="5,5,10,0"
+                    Grid.Column="1"
+                    DisplayMemberPath="nome"
+                    SelectedValuePath="id"
+                    materialDesign:HintAssist.Hint="Cidade"
+                    IsEditable="True"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </Grid>
+
+            <TextBox x:Name="txtEndereco" Margin="10,5,10,0" MaxLength="100" materialDesign:HintAssist.Hint="Endereço" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
+            <TextBox x:Name="txtNumero" Margin="10,5,10,0" MaxLength="15" materialDesign:HintAssist.Hint="Número" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
+            <TextBox x:Name="txtBairro" Margin="10,5,10,0" MaxLength="100" materialDesign:HintAssist.Hint="Bairro" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
+
+            <controls:MultiComboBox
+                x:Name="cbCulturas"
+                Margin="10,5,10,0"
+                VerticalAlignment="Top"
+                SelectedValuePath="id"
+                materialDesign:HintAssist.Hint="Culturas"
+                IsEditable="True"
+                IsReadOnly="True"
+                HorizontalAlignment="Stretch"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                <controls:MultiComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox IsChecked="{Binding selecionado}" Content="{Binding nome}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Checked="check_Checked" Unchecked="check_Checked" />
+                    </DataTemplate>
+                </controls:MultiComboBox.ItemTemplate>
+                <controls:MultiComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </controls:MultiComboBox.ItemsPanel>
+            </controls:MultiComboBox>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="35"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="txtLatLong" Margin="10,5,10,0" materialDesign:HintAssist.Hint="Latitude / Longitude" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+
+                <Button x:Name="btPesquisarGoogle" IsTabStop="False" Margin="5,0,10,0" Grid.Column="2"
+                        Click="btPesquisarGoogle_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                        ToolTip="Abrir Google Maps" Width="20" Height="20" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}">
+                    <materialDesign:PackIcon Kind="MapSearch"/>
+                </Button>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5,10" Grid.Row="2" Grid.ColumnSpan="2">
+                    <ToggleButton x:Name="optInativa" IsChecked="False" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSwitchToggleButton}"/>
+                    <TextBlock VerticalAlignment="Center" Text="Inativar Fazenda" Margin="5,0,0,0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5,10" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1">
+                    <ToggleButton x:Name="optRateioGeral" IsChecked="False" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSwitchToggleButton}"/>
+                    <TextBlock VerticalAlignment="Center" Text="Rateio Geral" Margin="5,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <controls:BtGravar x:Name="btGravar" Click="Button_Click" Grid.Row="2"/>
+    </Grid>
+</controls:WindowBase>

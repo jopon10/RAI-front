@@ -1,0 +1,29 @@
+﻿<Window x:Class="RAI.Pages.PageReportViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RAI.Pages"
+        xmlns:Reporting="clr-namespace:Telerik.Reporting;assembly=Telerik.Reporting" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:tr="http://schemas.telerik.com/wpf" 
+        mc:Ignorable="d"
+        WindowState="Maximized" PreviewMouseWheel="Window_PreviewMouseWheel" 
+        KeyDown="Window_KeyDown" PreviewKeyDown="Window_PreviewKeyDown"
+        Title="Prévia de Impressão" Height="600" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="ScrollBar">
+                <Setter Property="telerik:StyleManager.Theme" Value="Fluent"/>
+                <Setter Property="Opacity" Value="0.75"/>
+            </Style>
+        </Grid.Resources>
+
+        <tr:ReportViewer x:Name="ReportViewer1" IsManipulationEnabled="True" DocumentMapVisible="True" ViewMode="PrintPreview" EnableAccessibility="True">
+            <tr:ReportViewer.ReportSource>
+                <Reporting:TypeReportSource TypeName="Telerik.Reporting.Examples.CSharp.ReportCatalog, CSharp.ReportLibrary" />
+            </tr:ReportViewer.ReportSource>
+        </tr:ReportViewer>
+    </Grid>
+</Window>

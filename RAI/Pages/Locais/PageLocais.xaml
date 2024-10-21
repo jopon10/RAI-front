@@ -1,0 +1,178 @@
+﻿<UserControl x:Class="RAI.Pages.Locais.PageLocais"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RAI.Pages.Locais"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:my="clr-namespace:RAI.Controls" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <telerik:RadTabControl Name="tab" VerticalAlignment="Top" SelectionChanged="RadTabControl_SelectionChanged"
+				DisplayMemberPath="Content" DropDownDisplayMode="WhenNeeded" ScrollMode="Viewport" BorderThickness="0">
+
+            <telerik:RadTabItem Name="tabLocais" DropDownContent="Locais" Header="Locais" IsSelected="True">
+                <telerik:RadTabItem.Content>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button x:Name="btNovo" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="150" Click="btNovo_Click">
+                                Novo Local
+                            </Button>
+
+                            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}">
+                                <StackPanel Width="Auto">
+                                    <Button x:Name="btInativos" Content="Locais Inativos" Click="btInativos_Click"/>
+                                </StackPanel>
+                            </materialDesign:PopupBox>
+
+                            <Button 
+                                x:Name="btImprimir" Margin="10,0,0,0"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                ToolTip="Relatório" Click="btImprimir_Click" >
+                                <materialDesign:PackIcon Kind="Printer" Height="24" Width="24"/>
+                            </Button>
+
+                            <ProgressBar x:Name="pb" Visibility="Hidden" Margin="10,0,0,0"  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True"/>
+                        </StackPanel>
+
+                        <my:PonGrid x:Name="grid" Grid.Row="1" ShowColumnFooters="True">
+
+                            <telerik:RadGridView.Columns>
+                                <my:ButtonColumnEdit Header="" MinWidth="60" MaxWidth="60" CustomClick="ButtonColumnEditLocal_CustomClick"/>
+                                <my:ButtonColumnShow x:Name="btMapa" MinWidth="60" MaxWidth="60" CustomCommand="OpacityMapaLocal" IconKind="Earth" ToolTip="Mapear" Header="" CustomClick="btMapa_CustomClick"/>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding fazenda}" MinWidth="100" Width="auto" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding cultura}" MinWidth="100" Width="auto" Header="Cultura" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding nome}" MinWidth="100" Width="auto" Header="Nome" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding tipo_local_tela}" MinWidth="100" Width="auto" Header="Tipo Local" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding hectares, StringFormat=\{0:N2\}}" MinWidth="70" Width="auto" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" Header="Hectares" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction ResultFormatString="{}{0:N2}" />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding plantas, StringFormat=\{0:N0\}}" MinWidth="70" Width="auto" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" Header="Plantas" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction ResultFormatString="{}{0:N0}" />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding plantas_hectare, StringFormat=\{0:N0\}}" MinWidth="70" Width="100" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" Header="Plantas Por Hectare" HeaderTextWrapping="Wrap" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <local:MyPlantasHectareFunction/>
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding especie}" MinWidth="70" Width="auto" Header="Espécie" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding variedade}" MinWidth="70" Width="auto" Header="Variedade" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding espacamento}" MinWidth="70" Width="auto" HeaderTextAlignment="Right" TextAlignment="Right" HeaderTextWrapping="Wrap"  Header="Espaçamento" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding data_plantio, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="70" Width="auto" HeaderTextAlignment="Right" TextAlignment="Right" HeaderTextWrapping="Wrap" Header="Plantio&#x0a;Edificação" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding idade}" MinWidth="70" Width="auto" HeaderTextAlignment="Right" TextAlignment="Right" HeaderTextWrapping="Wrap" Header="Idade&#x0a;(Anos)" FooterTextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:AverageFunction ResultFormatString="{}{0:N0}"/>
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+
+                                <my:ButtonColumnDelete Header="" MinWidth="60" MaxWidth="60" IsReadOnly="False" DeleteClick="ButtonColumnDelete_DeleteClick"/>
+                            </telerik:RadGridView.Columns>
+                        </my:PonGrid>
+
+                        <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snack" Grid.Row="1"/>
+                    </Grid>
+
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Name="tabCulturas" DropDownContent="Culturas" Header="Culturas">
+                <telerik:RadTabItem.Content>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                            <!--<Button x:Name="btVincularCultura" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="200" Click="btVincularCultura_Click" Margin="10,0,0,0">
+                                Vincular Cultura Existente
+                            </Button>-->
+
+                            <ProgressBar x:Name="pbCultura" Visibility="Hidden" Margin="10,0,0,0" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True"/>
+                        </StackPanel>
+
+                        <my:PonGrid x:Name="gridCultura" Grid.Row="1">
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding nome}" MinWidth="100" Width="350" Header="Nome" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+
+                                <!--<my:ButtonColumnDelete Header="" MinWidth="60" MaxWidth="60" IsReadOnly="False" DeleteClick="ButtonColumnDelete_DeleteClick_1"/>-->
+                            </telerik:RadGridView.Columns>
+                        </my:PonGrid>
+
+                        <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snackCultura" Grid.Row="1"/>
+                    </Grid>
+
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Name="tabVariedades" DropDownContent="Variedades" Header="Variedades">
+                <telerik:RadTabItem.Content>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <!--<Button x:Name="btNovaVariedade" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="150" Click="btNovaVariedade_Click">
+                                Nova Variedade
+                            </Button>-->
+
+                            <ProgressBar x:Name="pbVariedades" Visibility="Hidden" Margin="10,0,0,0"  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True"/>
+                        </StackPanel>
+
+                        <my:PonGrid x:Name="gridVariedades" Grid.Row="1" ShowColumnFooters="True">
+                            <telerik:RadGridView.Columns>
+                                <!--<my:ButtonColumnEdit Header="" MinWidth="60" MaxWidth="60" CustomClick="ButtonEditVariedade_CustomClick"/>-->
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding cultura}" MinWidth="100" Width="150" Header="Cultura" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding especie}" MinWidth="100" Width="auto" Header="Espécie" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding nome}" MinWidth="100" Width="180" Header="Nome" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding hectares, StringFormat=\{0:N2\}}" Header="Total Hectares" HeaderTextWrapping="Wrap" Width="100" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction ResultFormatString="{}{0:N2}"/>
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding qtde_locais, StringFormat=\{0:N0\}}" Header="Qtde Lavouras" Width="100" HeaderTextWrapping="Wrap" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction ResultFormatString="{}{0:N0}"/>
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+
+                                <!--<my:ButtonColumnDelete Header="" MinWidth="60" MaxWidth="60" DeleteClick="ButtonDeleteVariedade_DeleteClick"/>-->
+                            </telerik:RadGridView.Columns>
+                        </my:PonGrid>
+
+                        <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snackVariedade" Grid.Row="1"/>
+                    </Grid>
+
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+
+        <Rectangle x:Name="ret" Fill="Black" Opacity="0.5" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>
