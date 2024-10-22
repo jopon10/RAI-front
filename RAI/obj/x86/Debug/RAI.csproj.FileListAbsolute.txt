@@ -108,8 +108,12 @@ C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.csproj.SuggestedBindingRedirects.cac
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\App.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Controls\BtGravar.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Controls\PonDialog.g.cs
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Agricola\AnalisesSolo\PageAnaliseSolo.g.cs
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Fazendas\PageFazendaInclude.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Fazendas\PageFazendas.g.cs
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Parceiros\PageParceiroInclude.g.cs
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Parceiros\PageParceiros.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Proprietarios\PageProprietarioInclude.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Proprietarios\PageProprietarios.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Usuarios\PageUsuarioInclude.g.cs
@@ -117,6 +121,7 @@ C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Usuarios\PageUsuarios.g.
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Locais\PageLocais.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Locais\PageLocalInclude.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Locais\PageLocalMapeamento.g.cs
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Inicio\PageMapaFazendas.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\PageLogin.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\PageMenu.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\PageReportViewer.g.cs
@@ -124,8 +129,6 @@ C:\Projetos\RAI-front\RAI\obj\x86\Debug\App.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI_MarkupCompile.cache
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI_MarkupCompile.lref
-C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.exe
-C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.pdb
 C:\Projetos\RAI-front\RAI\bin\Debug\RAI.exe.config
 C:\Projetos\RAI-front\RAI\bin\Debug\RAI.exe
 C:\Projetos\RAI-front\RAI\bin\Debug\RAI.pdb
@@ -187,8 +190,12 @@ C:\Projetos\RAI-front\RAI\bin\Debug\nl\Telerik.Windows.Controls.resources.dll
 C:\Projetos\RAI-front\RAI\bin\Debug\tr\Telerik.Windows.Controls.resources.dll
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Controls\BtGravar.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Controls\PonDialog.baml
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Agricola\AnalisesSolo\PageAnaliseSolo.baml
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Fazendas\PageFazendaInclude.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Fazendas\PageFazendas.baml
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Parceiros\PageParceiroInclude.baml
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Parceiros\PageParceiros.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Proprietarios\PageProprietarioInclude.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Proprietarios\PageProprietarios.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Usuarios\PageUsuarioInclude.baml
@@ -196,6 +203,7 @@ C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Usuarios\PageUsuarios.ba
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Locais\PageLocais.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Locais\PageLocalInclude.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Cadastros\Locais\PageLocalMapeamento.baml
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\Inicio\PageMapaFazendas.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\PageLogin.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\PageMenu.baml
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\Pages\PageReportViewer.baml
@@ -207,3 +215,5 @@ C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.csproj.GenerateResource.cache
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.exe.licenses
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.csproj.CoreCompileInputs.cache
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.csproj.CopyComplete
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.exe
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.pdb

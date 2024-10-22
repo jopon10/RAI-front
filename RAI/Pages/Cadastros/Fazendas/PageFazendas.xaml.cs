@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows;
+using RAI.ViewModel;
 using RAI.API;
 using System;
 
@@ -9,8 +10,8 @@ namespace RAI.Pages.Cadastros.Fazendas
 {
     public partial class PageFazendas : UserControl
     {
-        public List<ViewModel.Fazenda> fazendas_ativas { get; set; }
-        public List<ViewModel.Fazenda> fazendas_inativas { get; set; }
+        public List<Fazenda> fazendas_ativas { get; set; }
+        public List<Fazenda> fazendas_inativas { get; set; }
 
         private bool inativas = false;
 
@@ -89,7 +90,7 @@ namespace RAI.Pages.Cadastros.Fazendas
 
             ret.Visibility = Visibility.Visible;
 
-            var fazenda = sender as ViewModel.Fazenda;
+            var fazenda = sender as Fazenda;
             grid.SelectedItem = fazenda;
 
             var window = new PageFazendaInclude();
@@ -123,7 +124,7 @@ namespace RAI.Pages.Cadastros.Fazendas
         {
             if (sender == null) return;
 
-            var fazenda = sender as ViewModel.Fazenda;
+            var fazenda = sender as Fazenda;
 
             try
             {
@@ -150,7 +151,7 @@ namespace RAI.Pages.Cadastros.Fazendas
 
             ret.Visibility = Visibility.Visible;
 
-            var fazenda = sender as ViewModel.Fazenda;
+            var fazenda = sender as Fazenda;
             grid.SelectedItem = fazenda;
 
             var window = new PageLocalMapeamento();

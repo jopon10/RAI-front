@@ -20,8 +20,10 @@ namespace RAI.ViewModel
         public string cor_secundaria { get; set; }
 
         public bool admin { get; set; }
+        public bool proprietarios { get; set; }
         public bool fazendas { get; set; }
         public bool locais { get; set; }
+        public bool parceiros { get; set; }
         public bool usuarios { get; set; }
 
         public Login login { get; set; }

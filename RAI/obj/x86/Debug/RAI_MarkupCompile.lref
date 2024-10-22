@@ -1,9 +1,13 @@
-﻿C:\Projetos\RAI-front\RAI\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 
 FC:\Projetos\RAI-front\RAI\Controls\BtGravar.xaml;;
 FC:\Projetos\RAI-front\RAI\Controls\PonDialog.xaml;;
+FC:\Projetos\RAI-front\RAI\Pages\Agricola\AnalisesSolo\PageAnaliseSolo.xaml;;
+FC:\Projetos\RAI-front\RAI\Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Fazendas\PageFazendaInclude.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Fazendas\PageFazendas.xaml;;
+FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Parceiros\PageParceiroInclude.xaml;;
+FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Parceiros\PageParceiros.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Proprietarios\PageProprietarioInclude.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Proprietarios\PageProprietarios.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Usuarios\PageUsuarioInclude.xaml;;
@@ -11,6 +15,7 @@ FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Usuarios\PageUsuarios.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Locais\PageLocais.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Locais\PageLocalInclude.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\Cadastros\Locais\PageLocalMapeamento.xaml;;
+FC:\Projetos\RAI-front\RAI\Pages\Inicio\PageMapaFazendas.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\PageLogin.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\PageMenu.xaml;;
 FC:\Projetos\RAI-front\RAI\Pages\PageReportViewer.xaml;;

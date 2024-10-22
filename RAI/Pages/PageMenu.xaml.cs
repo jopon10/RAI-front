@@ -1,5 +1,7 @@
 ﻿using Telerik.Windows.Controls.MaterialControls;
+using RAI.Pages.Agricola.AnalisesSolo;
 using System.Collections.ObjectModel;
+using RAI.Pages.Cadastros.Parceiros;
 using RAI.Pages.Cadastros.Usuarios;
 using RAI.Pages.Cadastros.Fazendas;
 using RAI.Pages.Cadastros.Locais;
@@ -10,6 +12,7 @@ using Telerik.Windows.Controls;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Diagnostics;
+using RAI.Pages.Inicio;
 using System.Windows;
 using System.Linq;
 using RAI.API;
@@ -81,9 +84,9 @@ namespace RAI.Pages
         {
             itemsMenu = new List<NavigationViewItemModel>();
 
-            //var home = new NavigationViewItemModel() { Icon = PackIconKind.Home, Title = "Início", IsEnabled = true, FontWeight = FontWeights.Bold, page = new PageClimaPrevisao() };
-            //if (home != null && !itemsMenu.Select(s => s.Title).Contains(home.Title))
-            //    itemsMenu.Add(home);
+            var home = new NavigationViewItemModel() { Icon = PackIconKind.Home, Title = "Início", IsEnabled = true, FontWeight = FontWeights.Bold, page = new PageMapaFazendas() };
+            if (home != null && !itemsMenu.Select(s => s.Title).Contains(home.Title))
+                itemsMenu.Add(home);
 
             var cadastros = new NavigationViewItemModel() { Icon = PackIconKind.Register, Title = "Cadastros", FontWeight = FontWeights.Bold, IsEnabled = true };
             cadastros.SubItems = new ObservableCollection<NavigationViewItemModel>
@@ -91,10 +94,16 @@ namespace RAI.Pages
                 //new NavigationViewItemModel() { Title = "Proprietários" , IsEnabled = Helper.user.proprietarios, page = new PageProprietarios() },
                 new NavigationViewItemModel() { Title = "Fazendas", IsEnabled = Helper.user.fazendas, page = new PageFazendas() },
                 new NavigationViewItemModel() { Title = "Talhões" , IsEnabled = Helper.user.locais, page = new PageLocais() },
+                new NavigationViewItemModel() { Title = "Laboratórios" , IsEnabled = Helper.user.parceiros, page = new PageParceiros() },
                 new NavigationViewItemModel() { Title = "Usuários", IsEnabled = Helper.user.usuarios, page = new PageUsuarios() },
             };
+
             if (cadastros != null && !itemsMenu.Select(s => s.Title).Contains(cadastros.Title))
                 itemsMenu.Add(cadastros);
+
+            var analise_solo = new NavigationViewItemModel() { Icon = PackIconKind.TestTube, Title = "Análise de Solo", IsEnabled = true, FontWeight = FontWeights.Bold, page = new PageAnaliseSolo() };
+            if (analise_solo != null && !itemsMenu.Select(s => s.Title).Contains(analise_solo.Title))
+                itemsMenu.Add(analise_solo);
 
             NavigationView.ItemsSource = itemsMenu;
             NavigationView.SelectedIndex = 0;

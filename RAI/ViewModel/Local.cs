@@ -53,6 +53,8 @@ namespace RAI.ViewModel
             }
         }
 
+        public string tipo_filtro { get; set; }
+
         public Local Clone()
         {
             return (Local)this.MemberwiseClone();

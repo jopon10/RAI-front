@@ -37,8 +37,10 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding email}" Width="250" Header="Email" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding admin}" Width="85"  Header="Admin" ShowFieldFilters="False" ShowFilterButton="False"/>
 
+                <!--<telerik:GridViewDataColumn DataMemberBinding="{Binding proprietarios}" Width="85" Header="Proprietários" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>-->
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding fazendas}" Width="85" Header="Fazendas" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding locais}" Width="85" Header="Locais" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding parceiros}" Width="Auto" Header="Laboratórios" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding usuarios}" Width="85" Header="Usuarios" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
             </telerik:RadGridView.Columns>
         </my:PonGrid>

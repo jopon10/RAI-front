@@ -273,6 +273,23 @@ namespace RAI.API
             }
         }
 
+        public static async Task<List<Local>> GetFazendasMapasAsync()
+        {
+            using (var client = Helper.getHttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync("fazendasmapa");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<List<Local>>();
+                }
+                else
+                {
+                    throw new Exception((await response.Content.ReadAsAsync<Error>()).error);
+                }
+            }
+        }
+
         public static async Task<Fazenda> GetFazendaMapaAsync(Fazenda fazenda)
         {
             using (var client = Helper.getHttpClient())
@@ -443,6 +460,79 @@ namespace RAI.API
                 };
 
                 var response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new Exception((await response.Content.ReadAsAsync<Error>()).error);
+                }
+            }
+        }
+
+        public static async Task<List<Parceiro>> GetParceirosAsync(string tipo = "", bool minimal = false, bool somenteInativos = false)
+        {
+            using (var client = Helper.getHttpClient())
+            {
+                var queryString = HttpUtility.ParseQueryString(string.Empty, Encoding.UTF8);
+                if (minimal) queryString["minimal"] = "1";
+                queryString["somenteInativos"] = somenteInativos.ToString();
+                queryString["tipo"] = tipo;
+
+                HttpResponseMessage response = await client.GetAsync($"parceiros?{queryString.ToString()}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<List<Parceiro>>();
+                }
+                else
+                {
+                    throw new Exception((await response.Content.ReadAsAsync<Error>()).error);
+                }
+            }
+        }
+
+        public static async Task<Parceiro> PostParceiroAsync(Parceiro parceiro)
+        {
+            using (var client = Helper.getHttpClient())
+            {
+                HttpResponseMessage response = await client.PostAsJsonAsync("parceiros", parceiro);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<Parceiro>();
+                }
+                else
+                {
+                    throw new Exception((await response.Content.ReadAsAsync<Error>()).error);
+                }
+            }
+        }
+
+        public static async Task<Parceiro> PutParceiroAsync(Parceiro parceiro)
+        {
+            using (var client = Helper.getHttpClient())
+            {
+                HttpResponseMessage response = await client.PutAsJsonAsync($"parceiros/{parceiro.id}", parceiro);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<Parceiro>();
+                }
+                else
+                {
+                    throw new Exception((await response.Content.ReadAsAsync<Error>()).error);
+                }
+            }
+        }
+
+        public static async Task<bool> DeleteParceiroAsync(int parceiroId)
+        {
+            using (var client = Helper.getHttpClient())
+            {
+                HttpResponseMessage response = await client.DeleteAsync($"parceiros/{parceiroId}");
 
                 if (response.IsSuccessStatusCode)
                 {

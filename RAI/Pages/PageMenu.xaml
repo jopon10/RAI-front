@@ -140,7 +140,7 @@
                 </telerik:RadTransitionControl>
             </telerik:RadNavigationView.Content>
 
-            <telerik:RadNavigationView.PaneFooter>
+            <!--<telerik:RadNavigationView.PaneFooter>
                 <telerik:RadNavigationViewItem x:Name="itemTema" Content="Definir Tema" FontSize="15"
                                                Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FontWeight="Bold" 
                                                CommandParameter="{Binding ElementName=NavigationView}" 
@@ -151,7 +151,7 @@
                         </DataTemplate>
                     </telerik:RadNavigationViewItem.IconTemplate>
                 </telerik:RadNavigationViewItem>
-            </telerik:RadNavigationView.PaneFooter>
+            </telerik:RadNavigationView.PaneFooter>-->
         </telerik:RadNavigationView>
     </Grid>
 </Window>

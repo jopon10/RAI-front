@@ -38,8 +38,10 @@ namespace RAI.Pages.Cadastros.Usuarios
             }
 
             var list = new List<Permissao>();
+            //list.Add(new Permissao { grupo = "Cadastros", nome = "Proprietários" });
             list.Add(new Permissao { grupo = "Cadastros", nome = "Fazendas" });
             list.Add(new Permissao { grupo = "Cadastros", nome = "Locais" });
+            list.Add(new Permissao { grupo = "Cadastros", nome = "Laboratórios" });
             list.Add(new Permissao { grupo = "Cadastros", nome = "Usuários" });
 
             var grupos = list.Select(f => f.grupo).Distinct();
@@ -56,8 +58,10 @@ namespace RAI.Pages.Cadastros.Usuarios
 
                     if (user.id > 0)
                     {
+                        //if (item.nome == "Proprietários") permissao.IsChecked = user.proprietarios;
                         if (item.nome == "Fazendas") permissao.IsChecked = user.fazendas;
                         if (item.nome == "Locais") permissao.IsChecked = user.locais;
+                        if (item.nome == "Laboratórios") permissao.IsChecked = user.parceiros;
                         if (item.nome == "Usuários") permissao.IsChecked = user.usuarios;
                     }
 
@@ -155,8 +159,10 @@ namespace RAI.Pages.Cadastros.Usuarios
 
                         if (node.Parent != null)
                         {
+                            //if (node.Header.ToString() == "Proprietários") user.proprietarios = pode;
                             if (node.Header.ToString() == "Fazendas") user.fazendas = pode;
                             if (node.Header.ToString() == "Locais") user.locais = pode;
+                            if (node.Header.ToString() == "Laboratórios") user.parceiros = pode;
                             if (node.Header.ToString() == "Usuários") user.usuarios = pode;
                         }
                     }

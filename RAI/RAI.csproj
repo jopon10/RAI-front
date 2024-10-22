@@ -159,6 +159,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API\AgricolaAPI.cs" />
     <Compile Include="API\CadastroAPI.cs" />
     <Compile Include="Controls\BtGravar.xaml.cs">
       <DependentUpon>BtGravar.xaml</DependentUpon>
@@ -169,11 +170,23 @@
     <Compile Include="Controls\MultiComboBox.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Localization\CustomLocalizationManager.cs" />
+    <Compile Include="Pages\Agricola\AnalisesSolo\PageAnaliseSolo.xaml.cs">
+      <DependentUpon>PageAnaliseSolo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.xaml.cs">
+      <DependentUpon>PageAnaliseSoloInclude.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Cadastros\Fazendas\PageFazendaInclude.xaml.cs">
       <DependentUpon>PageFazendaInclude.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Cadastros\Fazendas\PageFazendas.xaml.cs">
       <DependentUpon>PageFazendas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Cadastros\Parceiros\PageParceiroInclude.xaml.cs">
+      <DependentUpon>PageParceiroInclude.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Cadastros\Parceiros\PageParceiros.xaml.cs">
+      <DependentUpon>PageParceiros.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Cadastros\Proprietarios\PageProprietarioInclude.xaml.cs">
       <DependentUpon>PageProprietarioInclude.xaml</DependentUpon>
@@ -199,6 +212,9 @@
     <Compile Include="Pages\Cadastros\Locais\ReportLocais.Designer.cs">
       <DependentUpon>ReportLocais.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Inicio\PageMapaFazendas.xaml.cs">
+      <DependentUpon>PageMapaFazendas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageLogin.xaml.cs">
       <DependentUpon>PageLogin.xaml</DependentUpon>
     </Compile>
@@ -214,6 +230,9 @@
     <Compile Include="Pages\ReportBase.Designer.cs">
       <DependentUpon>ReportBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AmostraSolo.cs" />
+    <Compile Include="ViewModel\AnaliseSolo.cs" />
+    <Compile Include="ViewModel\AnaliseSoloResultado.cs" />
     <Compile Include="ViewModel\Config.cs" />
     <Compile Include="ViewModel\ConsultaCEP.cs" />
     <Compile Include="ViewModel\Cultura.cs" />
@@ -222,6 +241,8 @@
     <Compile Include="ViewModel\Fazenda.cs" />
     <Compile Include="ViewModel\Local.cs" />
     <Compile Include="ViewModel\Login.cs" />
+    <Compile Include="ViewModel\Nutriente.cs" />
+    <Compile Include="ViewModel\Parceiro.cs" />
     <Compile Include="ViewModel\Permissao.cs" />
     <Compile Include="ViewModel\Proprietario.cs" />
     <Compile Include="ViewModel\ProprietarioCnpj.cs" />
@@ -247,11 +268,27 @@
     </Compile>
     <Compile Include="Controls\PonGrid.cs" />
     <Compile Include="Controls\WindowBase.cs" />
+    <Page Include="Pages\Agricola\AnalisesSolo\PageAnaliseSolo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Cadastros\Fazendas\PageFazendaInclude.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Cadastros\Fazendas\PageFazendas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Cadastros\Parceiros\PageParceiroInclude.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Cadastros\Parceiros\PageParceiros.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,6 +317,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Cadastros\Locais\PageLocalMapeamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Inicio\PageMapaFazendas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
