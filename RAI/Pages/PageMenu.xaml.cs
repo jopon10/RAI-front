@@ -101,7 +101,7 @@ namespace RAI.Pages
             if (cadastros != null && !itemsMenu.Select(s => s.Title).Contains(cadastros.Title))
                 itemsMenu.Add(cadastros);
 
-            var analise_solo = new NavigationViewItemModel() { Icon = PackIconKind.TestTube, Title = "Análise de Solo", IsEnabled = true, FontWeight = FontWeights.Bold, page = new PageAnaliseSolo() };
+            var analise_solo = new NavigationViewItemModel() { Icon = PackIconKind.TestTube, Title = "Análise de Solo", IsEnabled = Helper.user.analise_solo, FontWeight = FontWeights.Bold, page = new PageAnaliseSolo() };
             if (analise_solo != null && !itemsMenu.Select(s => s.Title).Contains(analise_solo.Title))
                 itemsMenu.Add(analise_solo);
 

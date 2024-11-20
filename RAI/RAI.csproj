@@ -161,6 +161,9 @@
     </ApplicationDefinition>
     <Compile Include="API\AgricolaAPI.cs" />
     <Compile Include="API\CadastroAPI.cs" />
+    <Compile Include="Controls\BtAcao.xaml.cs">
+      <DependentUpon>BtAcao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BtGravar.xaml.cs">
       <DependentUpon>BtGravar.xaml</DependentUpon>
     </Compile>
@@ -168,6 +171,9 @@
     <Compile Include="Controls\ButtonColumnEdit.cs" />
     <Compile Include="Controls\ButtonColumnShow.cs" />
     <Compile Include="Controls\MultiComboBox.cs" />
+    <Compile Include="Controls\PonCombo.cs" />
+    <Compile Include="Controls\PonComboSearchable.cs" />
+    <Compile Include="Controls\PonGridLight.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Localization\CustomLocalizationManager.cs" />
     <Compile Include="Pages\Agricola\AnalisesSolo\PageAnaliseSolo.xaml.cs">
@@ -232,7 +238,6 @@
     </Compile>
     <Compile Include="ViewModel\AmostraSolo.cs" />
     <Compile Include="ViewModel\AnaliseSolo.cs" />
-    <Compile Include="ViewModel\AnaliseSoloResultado.cs" />
     <Compile Include="ViewModel\Config.cs" />
     <Compile Include="ViewModel\ConsultaCEP.cs" />
     <Compile Include="ViewModel\Cultura.cs" />
@@ -244,10 +249,16 @@
     <Compile Include="ViewModel\Nutriente.cs" />
     <Compile Include="ViewModel\Parceiro.cs" />
     <Compile Include="ViewModel\Permissao.cs" />
+    <Compile Include="ViewModel\ProdutoMovimento.cs" />
     <Compile Include="ViewModel\Proprietario.cs" />
     <Compile Include="ViewModel\ProprietarioCnpj.cs" />
     <Compile Include="ViewModel\Session.cs" />
+    <Compile Include="ViewModel\Unidade.cs" />
     <Compile Include="ViewModel\User.cs" />
+    <Page Include="Controls\BtAcao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\BtGravar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

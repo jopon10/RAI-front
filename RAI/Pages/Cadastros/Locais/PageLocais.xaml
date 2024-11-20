@@ -52,7 +52,6 @@
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding fazenda}" MinWidth="100" Width="auto" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding cultura}" MinWidth="100" Width="auto" Header="Cultura" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding nome}" MinWidth="100" Width="auto" Header="Nome" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
-                                <telerik:GridViewDataColumn DataMemberBinding="{Binding tipo_local_tela}" MinWidth="100" Width="auto" Header="Tipo Local" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
 
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding hectares, StringFormat=\{0:N2\}}" MinWidth="70" Width="auto" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" Header="Hectares" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
                                     <telerik:GridViewDataColumn.AggregateFunctions>
@@ -72,11 +71,10 @@
                                     </telerik:GridViewDataColumn.AggregateFunctions>
                                 </telerik:GridViewDataColumn>
 
-                                <telerik:GridViewDataColumn DataMemberBinding="{Binding especie}" MinWidth="70" Width="auto" Header="Espécie" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding variedade}" MinWidth="70" Width="auto" Header="Variedade" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
 
-                                <telerik:GridViewDataColumn DataMemberBinding="{Binding espacamento}" MinWidth="70" Width="auto" HeaderTextAlignment="Right" TextAlignment="Right" HeaderTextWrapping="Wrap"  Header="Espaçamento" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
-                                <telerik:GridViewDataColumn DataMemberBinding="{Binding data_plantio, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="70" Width="auto" HeaderTextAlignment="Right" TextAlignment="Right" HeaderTextWrapping="Wrap" Header="Plantio&#x0a;Edificação" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding espacamento}" MinWidth="70" Width="auto" HeaderTextAlignment="Right" TextAlignment="Right" HeaderTextWrapping="Wrap" Header="Espaçamento" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding data_plantio, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="70" Width="auto" HeaderTextAlignment="Left" TextAlignment="Left" HeaderTextWrapping="Wrap" Header="Plantio" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
 
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding idade}" MinWidth="70" Width="auto" HeaderTextAlignment="Right" TextAlignment="Right" HeaderTextWrapping="Wrap" Header="Idade&#x0a;(Anos)" FooterTextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
                                     <telerik:GridViewDataColumn.AggregateFunctions>
@@ -147,7 +145,6 @@
                                 <!--<my:ButtonColumnEdit Header="" MinWidth="60" MaxWidth="60" CustomClick="ButtonEditVariedade_CustomClick"/>-->
 
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding cultura}" MinWidth="100" Width="150" Header="Cultura" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
-                                <telerik:GridViewDataColumn DataMemberBinding="{Binding especie}" MinWidth="100" Width="auto" Header="Espécie" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding nome}" MinWidth="100" Width="180" Header="Nome" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
 
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding hectares, StringFormat=\{0:N2\}}" Header="Total Hectares" HeaderTextWrapping="Wrap" Width="100" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">

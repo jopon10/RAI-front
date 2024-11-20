@@ -1,9 +1,15 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 
 namespace RAI.ViewModel
 {
     public class Local 
     {
+        public Local()
+        {
+            quadras = new List<LocalQuadra>();
+        }
+
         public int id { get; set; }
         public string codigo { get; set; }
         public string nome { get; set; }
@@ -55,9 +61,24 @@ namespace RAI.ViewModel
 
         public string tipo_filtro { get; set; }
 
+        public List<LocalQuadra> quadras { get; set; } 
+
         public Local Clone()
         {
             return (Local)this.MemberwiseClone();
+        }
+    }
+
+    public class LocalQuadra
+    {
+        public int id { get; set; }
+        public int local_id { get; set; }
+        public string nome { get; set; }
+        public bool deletar { get; set; }
+
+        public LocalQuadra Clone()
+        {
+            return (LocalQuadra)this.MemberwiseClone();
         }
     }
 }

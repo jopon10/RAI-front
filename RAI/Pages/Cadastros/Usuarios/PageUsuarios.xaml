@@ -42,6 +42,8 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding locais}" Width="85" Header="Locais" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding parceiros}" Width="Auto" Header="Laboratórios" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding usuarios}" Width="85" Header="Usuarios" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding analise_solo}" Width="85" Header="Análise de Solo" ShowFieldFilters="False" ShowFilterButton="False" HeaderTextWrapping="Wrap"/>
             </telerik:RadGridView.Columns>
         </my:PonGrid>
 

@@ -16,6 +16,8 @@ namespace RAI.Pages.Cadastros.Locais
         public List<Fazenda> fazendas { get; set; }
         public List<Cultura> culturas { get; set; }
         public List<Variedade> variedades { get; set; }
+        private List<LocalQuadra> quadras { get; set; }
+        private List<LocalQuadra> quadras2 { get; set; }
 
         public PageLocalInclude()
         {
@@ -26,12 +28,15 @@ namespace RAI.Pages.Cadastros.Locais
         {
             btGravar.IsLoading(true);
 
-            fazendas = await CadastroAPI.GetFazendasAsync(minimal: true);
-            culturas = await CadastroAPI.GetCulturasAsync();
-            variedades = await CadastroAPI.GetVariedadesAsync();
+            if (fazendas == null) fazendas = await CadastroAPI.GetFazendasAsync(minimal: true);
+            if (culturas == null) culturas = await CadastroAPI.GetCulturasAsync();
+            if (variedades == null) variedades = await CadastroAPI.GetVariedadesAsync();
 
             cbFazendas.ItemsSource = fazendas;
             cbCulturas.ItemsSource = culturas;
+
+            quadras = new List<LocalQuadra>();
+            quadras2 = new List<LocalQuadra>();
 
             if (local != null)
             {
@@ -48,12 +53,24 @@ namespace RAI.Pages.Cadastros.Locais
 
                 d1.SelectedDate = local.data_plantio;
                 optInativo.IsChecked = local.inativo;
+
+                local.quadras = await CadastroAPI.GetLocaisQuadrasAsync(local);
+                foreach (var item in local.quadras)
+                {
+                    var obj = item.Clone();
+                    quadras.Add(obj);
+
+                    var obj2 = item.Clone();
+                    quadras2.Add(obj2);
+                }
             }
             else
             {
                 local = new Local();
                 txtLocal.Focus();
             }
+
+            gridQuadras.ItemsSource = quadras;
 
             btGravar.IsLoading(false);
         }
@@ -159,17 +176,25 @@ namespace RAI.Pages.Cadastros.Locais
                 local.data_plantio = d1.SelectedDate;
                 local.inativo = optInativo.IsChecked.Value;
 
+                var Ids = quadras.Select(x => x.id).ToList();
+                var Ids2 = quadras2.Select(x => x.id).ToList();
+
+                var quadrasAux = quadras.Where(x => x.id == 0 || (x.id > 0 && Ids2.Contains(x.id))).ToList(); // Incluídas e Alteradas
+                quadrasAux.AddRange(quadras2.Where(x => x.id > 0 && !Ids.Contains(x.id)).Select(x => new LocalQuadra { id = x.id, nome = x.nome, local_id = x.local_id, deletar = true }).ToList()); // Excuídas
+
+                local.quadras = quadrasAux;
+
+                if (local.id == 0)
+                    local = await CadastroAPI.PostLocalAsync(local);
+                else
+                    await CadastroAPI.PutLocalAsync(local);
+
                 local.cultura = cbCulturas.Text;
                 local.fazenda = cbFazendas.Text;
                 local.variedade = cbVariedades.Text;
 
                 if (local.plantas > 0 && local.hectares > 0)
                     local.plantas_hectare = local.plantas / local.hectares;
-
-                if (local.id == 0)
-                    local = await CadastroAPI.PostLocalAsync(local);
-                else
-                    await CadastroAPI.PutLocalAsync(local);
 
                 gravou = true;
                 Close();

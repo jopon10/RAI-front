@@ -450,6 +450,23 @@ namespace RAI.API
             }
         }
 
+        public static async Task<List<LocalQuadra>> GetLocaisQuadrasAsync(Local local)
+        {
+            using (var client = Helper.getHttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync($"locaisquadras/{local.id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<List<LocalQuadra>>();
+                }
+                else
+                {
+                    throw new Exception((await response.Content.ReadAsAsync<Error>()).error);
+                }
+            }
+        }
+
         public static async Task<bool> PatchLocalCoordenadasAsync(Local local)
         {
             using (var client = Helper.getHttpClient())

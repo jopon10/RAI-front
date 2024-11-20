@@ -26,6 +26,8 @@ namespace RAI.ViewModel
         public bool parceiros { get; set; }
         public bool usuarios { get; set; }
 
+        public bool analise_solo { get; set; }
+
         public Login login { get; set; }
 
         public string logo_url { get; set; }

@@ -111,6 +111,6 @@
             </StackPanel>
         </StackPanel>
 
-        <controls:BtGravar x:Name="btGravar" Click="Button_Click" Grid.Row="2"/>
+        <controls:BtGravar x:Name="btGravar" Click="Button_Click" Grid.Row="1"/>
     </Grid>
 </controls:WindowBase>

@@ -14,16 +14,36 @@ namespace RAI.Pages.Agricola.AnalisesSolo
         public PageAnaliseSolo()
         {
             InitializeComponent();
+
+            dt.Culture = new System.Globalization.CultureInfo("pt-BR");
+            dt.Culture.DateTimeFormat.ShortDatePattern = "MMM-yyyy";
+
+            dt.SelectedDate = DateTime.Today;
+            dt.SelectionChanged += dt_SelectionChanged;
+
+            d1.SelectedDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            d2.SelectedDate = d1.SelectedDate?.AddMonths(1).AddDays(-1);
         }
 
-        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private async void CarregaAnalises()
         {
             pb.Visibility = Visibility.Visible;
 
-            analises = await AgricolaAPI.GetAnalisesSoloAsync();
+            var date = new DateTime(dt.SelectedDate.Value.Year, dt.SelectedDate.Value.Month, 1);
+            analises = await AgricolaAPI.GetAnalisesSoloAsync(date, date.AddMonths(1).AddDays(-1));
             grid.ItemsSource = analises;
 
             pb.Visibility = Visibility.Collapsed;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            CarregaAnalises();
+        }
+
+        private void dt_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CarregaAnalises();
         }
 
         private void btNovo_Click(object sender, RoutedEventArgs e)
@@ -81,6 +101,39 @@ namespace RAI.Pages.Agricola.AnalisesSolo
             {
                 //LogError.GenerateLog(fazenda, this.Name);
                 Helper.ShowPonDialog(ex.Message, tipoMensagem: MessageBoxImage.Exclamation);
+            }
+        }
+
+        private async void btFiltrar_Click(object sender, RoutedEventArgs e)
+        {
+            if (d1.SelectedDate == null)
+            {
+                d1.Focus();
+                return;
+            }
+
+            if (d2.SelectedDate == null)
+            {
+                d2.Focus();
+                return;
+            }
+
+            try
+            {
+                btFiltrar.IsLoading(true);
+
+                var consulta = await AgricolaAPI.GetAnalisesSoloAsync(d1.SelectedDate.Value, d2.SelectedDate.Value);
+                gridConsulta.ItemsSource = consulta;
+
+                if (consulta.Count == 0) Helper.ShowSnack(snack, "Nenhuma informação encontrada no período!");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                btFiltrar.IsLoading(false);
             }
         }
     }

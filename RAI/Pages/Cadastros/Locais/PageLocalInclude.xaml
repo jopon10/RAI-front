@@ -5,99 +5,124 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RAI.Pages.Cadastros.Locais"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:controls="clr-namespace:RAI.Controls"
         mc:Ignorable="d"
-        Title="Local" Height="450" Width="400" Loaded="Window_Loaded">
+        Title="Local" Height="500" Width="400" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="55"/>
         </Grid.RowDefinitions>
 
-        <StackPanel>
-            <TextBox x:Name="txtLocal" Margin="10,5,10,0" MaxLength="50" materialDesign:HintAssist.Hint="Nome" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
+        <telerik:RadTabControl Grid.Row="0" VerticalAlignment="Top" DisplayMemberPath="Content" DropDownDisplayMode="WhenNeeded" ScrollMode="Viewport" BorderThickness="0">
+            <telerik:RadTabItem x:Name="tabDadosBasicos" DropDownContent="Dados Básicos" Header="Dados Básicos">
+                <telerik:RadTabItem.Content>
 
-            <ComboBox 
-                x:Name="cbFazendas"
-                Margin="10,5,10,0"
-                DisplayMemberPath="nome"
-                SelectedValuePath="id"
-                materialDesign:HintAssist.Hint="Fazenda"
-                IsEditable="True"
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
+                    <StackPanel>
+                        <TextBox x:Name="txtLocal" Margin="10,5,10,0" MaxLength="50" materialDesign:HintAssist.Hint="Nome" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
 
-            <ComboBox 
-                x:Name="cbCulturas"
-                Margin="10,5,10,0"
-                DisplayMemberPath="nome"
-                SelectedValuePath="id"
-                materialDesign:HintAssist.Hint="Cultura"
-                IsEditable="True"
-                SelectionChanged="cbCulturas_SelectionChanged"
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
+                        <ComboBox 
+                            x:Name="cbFazendas"
+                            Margin="10,5,10,0"
+                            DisplayMemberPath="nome"
+                            SelectedValuePath="id"
+                            materialDesign:HintAssist.Hint="Fazenda"
+                            IsEditable="True"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
 
-            <Grid Name="gridLavoura">
-                <StackPanel>
-                    <ComboBox Margin="10,5,10,0"
-                         x:Name="cbVariedades"
-                         DisplayMemberPath="nome"
-                         SelectedValuePath="id"
-                         materialDesign:HintAssist.Hint="Variedade"
-                         IsEditable="True"
-                         Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
+                        <ComboBox 
+                            x:Name="cbCulturas"
+                            Margin="10,5,10,0"
+                            DisplayMemberPath="nome"
+                            SelectedValuePath="id"
+                            materialDesign:HintAssist.Hint="Cultura"
+                            IsEditable="True"
+                            SelectionChanged="cbCulturas_SelectionChanged"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
 
-                    <TextBox x:Name="txtHectares" Margin="10,5,10,0" TextChanged="txtEspacamentoLinha_TextChanged" materialDesign:HintAssist.Hint="Hectares" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                        <Grid Name="gridLavoura">
+                            <StackPanel>
+                                <ComboBox Margin="10,5,10,0"
+                                     x:Name="cbVariedades"
+                                     DisplayMemberPath="nome"
+                                     SelectedValuePath="id"
+                                     materialDesign:HintAssist.Hint="Variedade"
+                                     IsEditable="True"
+                                     Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ComboBox.ItemsPanel>
+                                </ComboBox>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                                <TextBox x:Name="txtHectares" Margin="10,5,10,0" TextChanged="txtEspacamentoLinha_TextChanged" materialDesign:HintAssist.Hint="Hectares" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
 
 
-                        <TextBox x:Name="txtEspacamentoLinha" TextChanged="txtEspacamentoLinha_TextChanged" Margin="10,0,5,0" materialDesign:HintAssist.Hint="Espaçamento entre Linha" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtEspacamentoPlanta" TextChanged="txtEspacamentoLinha_TextChanged" Margin="5,0,10,0" materialDesign:HintAssist.Hint="Espaçamento entre Planta" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Grid.Column="1"/>
+                                    <TextBox x:Name="txtEspacamentoLinha" TextChanged="txtEspacamentoLinha_TextChanged" Margin="10,0,5,0" materialDesign:HintAssist.Hint="Espaçamento entre Linha" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txtEspacamentoPlanta" TextChanged="txtEspacamentoLinha_TextChanged" Margin="5,0,10,0" materialDesign:HintAssist.Hint="Espaçamento entre Planta" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Grid.Column="1"/>
 
-                        <TextBox x:Name="txtPlantas" Margin="10,0,5,0" TextChanged="txtPlantas_TextChanged" materialDesign:HintAssist.Hint="Qtde Total de Plantas" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Grid.Row="1"/>
-                        <TextBox x:Name="txtPlantasHectare" Margin="5,0,10,0" Opacity="0.8" IsReadOnly="True" IsTabStop="False" materialDesign:HintAssist.Hint="Plantas por Hectare" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
-                    </Grid>
-                </StackPanel>
-            </Grid>
+                                    <TextBox x:Name="txtPlantas" Margin="10,0,5,0" TextChanged="txtPlantas_TextChanged" materialDesign:HintAssist.Hint="Qtde Total de Plantas" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Grid.Row="1"/>
+                                    <TextBox x:Name="txtPlantasHectare" Margin="5,0,10,0" Opacity="0.8" IsReadOnly="True" IsTabStop="False" materialDesign:HintAssist.Hint="Plantas por Hectare" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
 
-            <!--<Grid Name="gridEdificacao" Visibility="Collapsed">
-                <TextBox x:Name="txtCapacidade" Margin="10,5,10,0" materialDesign:HintAssist.Hint="Capacidade" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-            </Grid>-->
+                        <DatePicker x:Name="d1" MinWidth="100" Margin="10,5,10,0" materialDesign:HintAssist.Hint="Data do Plantio" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
 
-            <DatePicker x:Name="d1" MinWidth="100" Margin="10,5,10,0" materialDesign:HintAssist.Hint="Data do Plantio" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,10,0" Grid.Row="2" Grid.ColumnSpan="2">
+                            <ToggleButton x:Name="optInativo" IsChecked="False" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSwitchToggleButton}"/>
+                            <TextBlock VerticalAlignment="Center" Text="Inativar Local"/>
+                        </StackPanel>
+                    </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,10,0" Grid.Row="2" Grid.ColumnSpan="2">
-                <ToggleButton x:Name="optInativo" IsChecked="False" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSwitchToggleButton}"/>
-                <TextBlock VerticalAlignment="Center" Text="Inativar Local"/>
-            </StackPanel>
-        </StackPanel>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem x:Name="tabQuadras" DropDownContent="Quadras" Header="Quadras">
+                <telerik:RadTabItem.Content>
+
+                    <controls:PonGridLight x:Name="gridQuadras" Margin="10,5,10,0" NewRowPosition="Bottom">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding nome, Mode=TwoWay}" Width="220" Header="Nome" ShowFieldFilters="False" ShowFilterButton="False">
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding nome, Mode=TwoWay}" MaxLength="50"/>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+
+                            <telerik:GridViewDataColumn IsReadOnly="True" TabStopMode="Skip" Width="20" ShowFieldFilters="False" ShowFilterButton="False"/>
+                        </telerik:RadGridView.Columns>
+                    </controls:PonGridLight>
+
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
 
         <controls:BtGravar x:Name="btGravar" Click="Button_Click" Grid.Row="1"/>
     </Grid>

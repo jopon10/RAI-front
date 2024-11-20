@@ -5,10 +5,140 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RAI.Pages.Agricola.AnalisesSolo"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:controls="clr-namespace:RAI.Controls" 
         mc:Ignorable="d"
-        Title="Análise de Solo" Height="450" Width="800" Loaded="WindowBase_Loaded">
+        Title="Análise de Solo" Height="750" Width="450" Loaded="WindowBase_Loaded">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
 
+        <StackPanel Margin="10,0">
+            <controls:PonCombo
+                x:Name="cbParceiros"
+                Margin="0,5,0,0"
+                DisplayMemberPath="nome"
+                SelectedValuePath="id"
+                materialDesign:HintAssist.Hint="Laboratório"
+                IsEditable="True"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </controls:PonCombo>
+
+            <controls:PonCombo
+                x:Name="cbLocais"
+                Margin="0,5,0,0"
+                DisplayMemberPath="nome"
+                SelectedValuePath="id"
+                materialDesign:HintAssist.Hint="Local"
+                IsEditable="True"
+                SelectionChanged="cbLocais_SelectionChanged"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </controls:PonCombo>
+
+            <controls:PonCombo
+                x:Name="cbQuadras"
+                Margin="0,5,0,0"
+                DisplayMemberPath="nome"
+                SelectedValuePath="id"
+                materialDesign:HintAssist.Hint="Quadra"
+                IsEditable="True"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </controls:PonCombo>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <DatePicker x:Name="d1" MinWidth="100" Margin="0,5,5,0" materialDesign:HintAssist.Hint="Data" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+
+                <ComboBox 
+                    x:Name="cbProdundidade"
+                    Margin="5,5,0,0"
+                    materialDesign:HintAssist.Hint="Profundidade"
+                    IsEditable="True"
+                    Grid.Column="1"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+
+                    <ComboBoxItem Content="0-20 cm" IsSelected="True"/>
+                    <ComboBoxItem Content="20-40 cm"/>
+
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </Grid>
+
+            <TextBox x:Name="txtObs" Margin="0,5,0,0" MaxLength="500" materialDesign:HintAssist.Hint="Observação" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        </StackPanel>
+
+        <controls:PonGridLight x:Name="grid" Margin="10,20,10,10" Grid.Row="1">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding nomeProduto}" HeaderTextAlignment="Left" TextAlignment="Left" Width="100" Header="Nutriente" ShowFieldFilters="False" ShowFilterButton="False" IsReadOnly="True"/>
+
+                <telerik:GridViewComboBoxColumn x:Name="cbExtrator" Header="Extrator" DataMemberBinding="{Binding extrator}" Width="100" MinWidth="100" UniqueName="Extrator" SelectedValueMemberPath="sigla" DisplayMemberPath="sigla" IsComboBoxEditable="True" ItemsSourceBinding="{Binding extratores}">
+                    <telerik:GridViewComboBoxColumn.EditorStyle>
+                        <Style TargetType="telerik:RadComboBox">
+                            <Setter Property="OpenDropDownOnFocus" Value="True"/>
+                            <Setter Property="CanKeyboardNavigationSelectItems" Value="True"/>
+                            <Setter Property="CanAutocompleteSelectItems" Value="True"/>
+                            <Setter Property="TextSearchMode" Value="Contains"/>
+                            <Setter Property="IsFilteringEnabled" Value="True"/>
+                            <Setter Property="ItemsPanel">
+                                <Setter.Value>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </telerik:GridViewComboBoxColumn.EditorStyle>
+                </telerik:GridViewComboBoxColumn>
+
+                <telerik:GridViewComboBoxColumn x:Name="cbUnidade" Header="Unidade" DataMemberBinding="{Binding unidade}" Width="100" MinWidth="100" UniqueName="Unidade" SelectedValueMemberPath="sigla" DisplayMemberPath="sigla" IsComboBoxEditable="True" ItemsSourceBinding="{Binding unidades_analise_solo}">
+                    <telerik:GridViewComboBoxColumn.EditorStyle>
+                        <Style TargetType="telerik:RadComboBox">
+                            <Setter Property="OpenDropDownOnFocus" Value="True"/>
+                            <Setter Property="CanKeyboardNavigationSelectItems" Value="True"/>
+                            <Setter Property="CanAutocompleteSelectItems" Value="True"/>
+                            <Setter Property="TextSearchMode" Value="Contains"/>
+                            <Setter Property="IsFilteringEnabled" Value="True"/>
+                            <Setter Property="ItemsPanel">
+                                <Setter.Value>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </telerik:GridViewComboBoxColumn.EditorStyle>
+                </telerik:GridViewComboBoxColumn>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding quantidade, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="100" Header="Quantidade" ShowFieldFilters="False" ShowFilterButton="False"/>
+            </telerik:RadGridView.Columns>
+        </controls:PonGridLight>
+
+        <controls:BtGravar x:Name="btGravar" Click="Button_Click" Grid.Row="2"/>
     </Grid>
 </controls:WindowBase>

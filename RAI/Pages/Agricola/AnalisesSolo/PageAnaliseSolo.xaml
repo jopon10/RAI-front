@@ -10,44 +10,166 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <telerik:RadTabControl DisplayMemberPath="Content" DropDownDisplayMode="WhenNeeded" ScrollMode="Viewport" BorderThickness="0" >
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Button x:Name="btNovo" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="150" Click="btNovo_Click">
-                Nova Análise
-            </Button>
+            <telerik:RadTabItem DropDownContent="Análises de Solo" Header="Análises de Solo" IsSelected="True">
+                <telerik:RadTabItem.Content>
 
-            <ProgressBar x:Name="pb" Visibility="Hidden" Margin="10,0,0,0"  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
-        </StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-        <my:PonGrid x:Name="grid" Grid.Row="1" ShowColumnFooters="True">
-            <telerik:RadGridView.Columns>
-                <my:ButtonColumnEdit Header="" MinWidth="60" MaxWidth="60" CustomClick="ButtonColumnEdit_CustomClick"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button x:Name="btNovo" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="150" Click="btNovo_Click">
+                                Nova Análise
+                            </Button>
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding nome}" Width="250" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding estado}" Width="80" Header="Estado" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding cidade}" Width="180" Header="Cidade" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                            <telerik:RadDatePicker x:Name="dt" Width="202" Margin="10,0,0,0" Validation.ErrorTemplate="{x:Null}" DateSelectionMode="Month" DateTimeWatermarkContent="Competência"/>
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding hectares, StringFormat=\{0:N2\}}" Header="Total Hectares" HeaderTextWrapping="Wrap" Width="100" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
-                    <telerik:GridViewDataColumn.AggregateFunctions>
-                        <telerik:SumFunction ResultFormatString="{}{0:N2}" />
-                    </telerik:GridViewDataColumn.AggregateFunctions>
-                </telerik:GridViewDataColumn>
+                            <ProgressBar x:Name="pb" Visibility="Hidden" Margin="10,0,0,0"  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+                        </StackPanel>
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding qtde_locais, StringFormat=\{0:N0\}}" Header="Qtde Lavouras" Width="100" HeaderTextWrapping="Wrap" FooterTextAlignment="Right" HeaderTextAlignment="Right" TextAlignment="Right" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith">
-                    <telerik:GridViewDataColumn.AggregateFunctions>
-                        <telerik:SumFunction ResultFormatString="{}{0:N0}" />
-                    </telerik:GridViewDataColumn.AggregateFunctions>
-                </telerik:GridViewDataColumn>
+                        <my:PonGrid x:Name="grid" Grid.Row="1">
+                            <telerik:RadGridView.Columns>
+                                <my:ButtonColumnEdit Header="" MinWidth="60" MaxWidth="60" CustomClick="ButtonColumnEdit_CustomClick"/>
 
-                <my:ButtonColumnDelete Header="" MinWidth="60" MaxWidth="60" IsReadOnly="False" DeleteClick="ButtonColumnDelete_DeleteClick"/>
-            </telerik:RadGridView.Columns>
-        </my:PonGrid>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding data, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="70" Width="Auto" HeaderTextAlignment="Left" TextAlignment="Left" HeaderTextWrapping="Wrap" Header="Data" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding parceiro}" Width="200" Header="Laboratório" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding fazenda}" Width="200" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding local}" Width="200" Header="Local" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding quadra}" Width="200" Header="Quadra" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding profundidade}" Width="Auto" Header="Profundidade" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ph, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="80" Header="pH" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding mo, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="M.O." ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding p, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="P" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding k, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="K" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ca, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Ca" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding mg, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Mg" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding na, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Na" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding h_al, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="H+Al" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding al, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Al" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ctc, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="CTC" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding sb, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="S.B." ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding v, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="V%" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ca_ctc, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="Auto" Header="%Ca na CTC" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding mg_ctc, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="Auto" Header="%Mg na CTC" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding k_ctc, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="Auto" Header="%K na CTC" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding m, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="m%" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding s, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="S" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding b, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="B" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding cu, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Cu" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding fe, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Fe" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding mn, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Mn" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding zn, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Zn" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding argila, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Argila" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding silte, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Silte" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding areia, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Areia" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding observacao}" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains" Width="300" Header="Observação" ShowFieldFilters="False" ShowFilterButton="False"/>
 
-        <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snack" Grid.Row="1"/>
+                                <my:ButtonColumnDelete Header="" MinWidth="60" MaxWidth="60" IsReadOnly="False" DeleteClick="ButtonColumnDelete_DeleteClick"/>
+                            </telerik:RadGridView.Columns>
+                        </my:PonGrid>
+
+                        <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snack" Grid.Row="1"/>
+                    </Grid>
+
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem DropDownContent="Consulta" Header="Consulta">
+                <telerik:RadTabItem.Content>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <DatePicker Name="d1" Width="100" materialDesign:HintAssist.Hint="Data Início" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                            <DatePicker Name="d2" Width="100" materialDesign:HintAssist.Hint="Data Fim" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,0"/>
+
+                            <my:BtAcao x:Name="btFiltrar" Margin="10,0,0,0" Click="btFiltrar_Click"/>
+
+                            <!--<Button  
+                                 Name="btGrafico" Margin="10,0,0,0" 
+                                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                 ToolTip="Gráfico" Click="btGrafico_Click">
+                                <materialDesign:PackIcon Name="iconGrafico" Kind="ChartBar" Height="24" Width="24"/>
+                            </Button>-->
+
+                            <!--<materialDesign:PopupBox
+                                Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                                Height="42" Width="42" 
+                                Margin="10,0,0,0"
+                                PlacementMode="BottomAndAlignCentres"
+                                PopupMode="Click"  
+                                ToolTipService.Placement="Right"
+                                ToolTip="Relatório"
+                                HorizontalAlignment="Center">
+                                <materialDesign:PopupBox.ToggleContent>
+                                    <materialDesign:PackIcon Kind="LocalPrintShop" Width="24" Height="24"/>
+                                </materialDesign:PopupBox.ToggleContent>
+
+                                <StackPanel>
+                                    <Button ToolTip="Nutrientes por Local" Click="btImprimirNutrientes_Click">
+                                        1
+                                    </Button>
+                                    <Button x:Name="btImprimirGrafico2" ToolTip="Gráfico" IsEnabled="False" Click="btImprimirGrafico_Click" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}">
+                                        <materialDesign:PackIcon Kind="ChartBar" Height="24" Width="24"/>
+                                    </Button>
+                                </StackPanel>
+                            </materialDesign:PopupBox>-->
+
+                            <ProgressBar x:Name="pbConsulta" Visibility="Hidden" Margin="10,0,0,0" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+                        </StackPanel>
+
+                        <my:PonGrid x:Name="gridConsulta" Grid.Row="1">
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding data, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="70" Width="Auto" HeaderTextAlignment="Left" TextAlignment="Left" HeaderTextWrapping="Wrap" Header="Data" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding parceiro}" Width="200" Header="Laboratório" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding fazenda}" Width="200" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding local}" Width="200" Header="Local" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding quadra}" Width="200" Header="Quadra" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding profundidade}" Width="Auto" Header="Profundidade" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ph, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="80" Header="pH" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding mo, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="M.O." ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding p, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="P" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding k, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="K" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ca, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Ca" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding mg, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Mg" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding na, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Na" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding h_al, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="H+Al" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding al, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Al" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ctc, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="CTC" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding sb, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="S.B." ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding v, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="V%" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ca_ctc, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="Auto" Header="%Ca na CTC" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding mg_ctc, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="Auto" Header="%Mg na CTC" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding k_ctc, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="Auto" Header="%K na CTC" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding m, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="m%" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding s, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="S" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding b, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="B" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding cu, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Cu" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding fe, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Fe" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding mn, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Mn" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding zn, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Zn" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding argila, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Argila" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding silte, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Silte" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding areia, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="75" Header="Areia" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding observacao}" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains" Width="300" Header="Observação" ShowFieldFilters="False" ShowFilterButton="False"/>
+                            </telerik:RadGridView.Columns>
+                        </my:PonGrid>
+
+                        <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snackConsulta" Grid.Row="1"/>
+                    </Grid>
+
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+
+        </telerik:RadTabControl>
 
         <Rectangle x:Name="ret" Fill="Black" Opacity="0.5" Visibility="Collapsed" Grid.RowSpan="2"/>
     </Grid>

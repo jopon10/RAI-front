@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="RAI.Controls.BtAcao"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RAI.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="175" Loaded="UserControl_Loaded">
+    <Grid>
+        <Button x:Name="btAcao" VerticalAlignment="Center" Width="150" Click="btAcao_Click" Style="{StaticResource MaterialDesignRaisedAccentButton}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="txtLabel" Text="Filtrar" VerticalAlignment="Center"/>
+                <ProgressBar x:Name="pb" Margin="5,0,0,0" VerticalAlignment="Center" Visibility="Collapsed" Style="{DynamicResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

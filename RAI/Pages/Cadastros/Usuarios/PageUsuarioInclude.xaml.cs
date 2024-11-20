@@ -44,6 +44,8 @@ namespace RAI.Pages.Cadastros.Usuarios
             list.Add(new Permissao { grupo = "Cadastros", nome = "Laboratórios" });
             list.Add(new Permissao { grupo = "Cadastros", nome = "Usuários" });
 
+            list.Add(new Permissao { grupo = "Agrícola", nome = "Análise de Solo" });
+
             var grupos = list.Select(f => f.grupo).Distinct();
             foreach (var grupo in grupos)
             {
@@ -63,6 +65,8 @@ namespace RAI.Pages.Cadastros.Usuarios
                         if (item.nome == "Locais") permissao.IsChecked = user.locais;
                         if (item.nome == "Laboratórios") permissao.IsChecked = user.parceiros;
                         if (item.nome == "Usuários") permissao.IsChecked = user.usuarios;
+
+                        if (item.nome == "Análise de Solo") permissao.IsChecked = user.analise_solo;
                     }
 
                     parent.Items.Add(permissao);
@@ -164,6 +168,8 @@ namespace RAI.Pages.Cadastros.Usuarios
                             if (node.Header.ToString() == "Locais") user.locais = pode;
                             if (node.Header.ToString() == "Laboratórios") user.parceiros = pode;
                             if (node.Header.ToString() == "Usuários") user.usuarios = pode;
+
+                            if (node.Header.ToString() == "Análise de Solo") user.analise_solo = pode;
                         }
                     }
                 }

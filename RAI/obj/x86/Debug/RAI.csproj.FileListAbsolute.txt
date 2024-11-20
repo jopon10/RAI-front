@@ -217,3 +217,5 @@ C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.csproj.CoreCompileInputs.cache
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.csproj.CopyComplete
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.exe
 C:\Projetos\RAI-front\RAI\obj\x86\Debug\RAI.pdb
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Controls\BtAcao.g.cs
+C:\Projetos\RAI-front\RAI\obj\x86\Debug\Controls\BtAcao.baml
