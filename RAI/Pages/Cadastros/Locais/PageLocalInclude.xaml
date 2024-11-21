@@ -96,7 +96,7 @@
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,10,0" Grid.Row="2" Grid.ColumnSpan="2">
                             <ToggleButton x:Name="optInativo" IsChecked="False" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSwitchToggleButton}"/>
-                            <TextBlock VerticalAlignment="Center" Text="Inativar Local"/>
+                            <TextBlock VerticalAlignment="Center" Text="Inativar Talhão"/>
                         </StackPanel>
                     </StackPanel>
 

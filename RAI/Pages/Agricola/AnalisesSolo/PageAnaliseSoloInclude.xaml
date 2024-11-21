@@ -79,8 +79,10 @@
                     Grid.Column="1"
                     Style="{StaticResource MaterialDesignFloatingHintComboBox}">
 
+                    <ComboBoxItem Content="0-10 cm"/>
                     <ComboBoxItem Content="0-20 cm" IsSelected="True"/>
                     <ComboBoxItem Content="20-40 cm"/>
+                    <ComboBoxItem Content="40-60 cm"/>
 
                     <ComboBox.ItemsPanel>
                         <ItemsPanelTemplate>

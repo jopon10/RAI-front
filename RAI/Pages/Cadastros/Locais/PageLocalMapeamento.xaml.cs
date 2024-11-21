@@ -87,7 +87,7 @@ namespace RAI.Pages.Cadastros.Locais
 
                 if (local == null)
                 {
-                    Helper.ShowPonDialog("Local não encontrado.");
+                    Helper.ShowPonDialog("Talhão não encontrado.");
                     return;
                 }
 

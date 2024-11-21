@@ -35,20 +35,20 @@ namespace RAI.Controls
 
             if (!string.IsNullOrEmpty(CustomCommand) && dataItem != null)
             {
-                //if (CustomCommand == "OpacityMapaLocal")
-                //{
-                //    var local = dataItem as ViewModel.Local;
-                //    if (local.mapeado)
-                //    {
-                //        IconOpacity = 1;
-                //        toolTip = "Mapeado";
-                //    }
-                //    else
-                //    {
-                //        IconOpacity = 0.3;
-                //        toolTip = "Mapear";
-                //    }
-                //}
+                if (CustomCommand == "OpacityMapaLocal")
+                {
+                    var local = dataItem as ViewModel.Local;
+                    if (local.mapeado)
+                    {
+                        IconOpacity = 1;
+                        toolTip = "Mapeado";
+                    }
+                    else
+                    {
+                        IconOpacity = 0.3;
+                        toolTip = "Mapear";
+                    }
+                }
             }
             else
             {

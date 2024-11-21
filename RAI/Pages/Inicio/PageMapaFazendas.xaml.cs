@@ -117,7 +117,7 @@ namespace RAI.Pages.Inicio
             }
 
             txtTotalHa.Text = $"Hectares: {locaisAux.Sum(x => x.hectares.GetValueOrDefault()).ToString("N2")}";
-            txtQtdeLocais.Text = $"Locais: {locaisAux.Count.ToString("N0")}";
+            txtQtdeLocais.Text = $"Talhões: {locaisAux.Count.ToString("N0")}";
 
             SetBestView();
         }

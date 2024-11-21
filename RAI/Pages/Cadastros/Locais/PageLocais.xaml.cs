@@ -95,9 +95,9 @@ namespace RAI.Pages.Cadastros.Locais
             inativos = !inativos;
 
             if (inativos)
-                btInativos.Content = "Locais Ativos";
+                btInativos.Content = "Talhões Ativos";
             else
-                btInativos.Content = "Locais Inativos";
+                btInativos.Content = "Talhões Inativos";
 
             CarregaLocais();
         }
@@ -206,7 +206,7 @@ namespace RAI.Pages.Cadastros.Locais
                 return;
             }
 
-            Helper.ShowReport(new ReportLocais(consultaFiltro), titulo: "Listagem de Locais");
+            Helper.ShowReport(new ReportLocais(consultaFiltro), titulo: "Listagem de Talhões");
         }
 
         private void btMapa_CustomClick(object sender, RoutedEventArgs e)

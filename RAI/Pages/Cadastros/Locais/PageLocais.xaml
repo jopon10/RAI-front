@@ -24,12 +24,12 @@
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                             <Button x:Name="btNovo" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="150" Click="btNovo_Click">
-                                Novo Local
+                                Novo Talhão
                             </Button>
 
                             <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}">
                                 <StackPanel Width="Auto">
-                                    <Button x:Name="btInativos" Content="Locais Inativos" Click="btInativos_Click"/>
+                                    <Button x:Name="btInativos" Content="Talhões Inativos" Click="btInativos_Click"/>
                                 </StackPanel>
                             </materialDesign:PopupBox>
 

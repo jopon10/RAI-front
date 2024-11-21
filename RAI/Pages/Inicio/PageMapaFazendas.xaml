@@ -29,7 +29,7 @@
 
                     <StackPanel>
                         <TextBlock x:Name="txtTotalHa" FontSize="15" FontWeight="Bold" Text="Hectares: " Margin="5,0,0,0" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
-                        <TextBlock x:Name="txtQtdeLocais" FontSize="15" FontWeight="Bold" Text="Locais: " Margin="5,0,0,0" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                        <TextBlock x:Name="txtQtdeLocais" FontSize="15" FontWeight="Bold" Text="Talhões: " Margin="5,0,0,0" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
