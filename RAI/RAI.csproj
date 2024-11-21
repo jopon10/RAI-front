@@ -170,9 +170,13 @@
     <Compile Include="Controls\ButtonColumnDelete.cs" />
     <Compile Include="Controls\ButtonColumnEdit.cs" />
     <Compile Include="Controls\ButtonColumnShow.cs" />
+    <Compile Include="Controls\CartesianAnimation.cs" />
+    <Compile Include="Controls\ChartAnimationUtilities.cs" />
     <Compile Include="Controls\MultiComboBox.cs" />
+    <Compile Include="Controls\PieAnimation.cs" />
     <Compile Include="Controls\PonCombo.cs" />
     <Compile Include="Controls\PonComboSearchable.cs" />
+    <Compile Include="Controls\PonDataPoint.cs" />
     <Compile Include="Controls\PonGridLight.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Localization\CustomLocalizationManager.cs" />

@@ -10,9 +10,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid>
-        <telerik:RadTabControl DisplayMemberPath="Content" DropDownDisplayMode="WhenNeeded" ScrollMode="Viewport" BorderThickness="0" >
+        <telerik:RadTabControl x:Name="tab" DisplayMemberPath="Content" DropDownDisplayMode="WhenNeeded" ScrollMode="Viewport" BorderThickness="0" SelectionChanged="RadTabControl_SelectionChanged">
 
-            <telerik:RadTabItem DropDownContent="Análises de Solo" Header="Análises de Solo" IsSelected="True">
+            <telerik:RadTabItem Name="tabAnalises" DropDownContent="Análises" Header="Análises" IsSelected="True">
                 <telerik:RadTabItem.Content>
 
                     <Grid>
@@ -38,7 +38,7 @@
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding data, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="70" Width="Auto" HeaderTextAlignment="Left" TextAlignment="Left" HeaderTextWrapping="Wrap" Header="Data" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding parceiro}" Width="200" Header="Laboratório" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding fazenda}" Width="200" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
-                                <telerik:GridViewDataColumn DataMemberBinding="{Binding local}" Width="200" Header="Local" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding local}" Width="200" Header="Talhão" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding quadra}" Width="200" Header="Quadra" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding profundidade}" Width="Auto" Header="Profundidade" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding ph, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="80" Header="pH" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
@@ -78,7 +78,7 @@
                 </telerik:RadTabItem.Content>
             </telerik:RadTabItem>
 
-            <telerik:RadTabItem DropDownContent="Consulta" Header="Consulta">
+            <telerik:RadTabItem Name="tabConsulta" DropDownContent="Consulta" Header="Consulta">
                 <telerik:RadTabItem.Content>
 
                     <Grid>
@@ -91,14 +91,30 @@
                             <DatePicker Name="d1" Width="100" materialDesign:HintAssist.Hint="Data Início" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                             <DatePicker Name="d2" Width="100" materialDesign:HintAssist.Hint="Data Fim" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,0"/>
 
+                            <ComboBox
+                                x:Name="cbLocais"
+                                Margin="10,0,0,0"
+                                Width="200"
+                                DisplayMemberPath="nome"
+                                SelectedValuePath="id"
+                                materialDesign:HintAssist.Hint="Talhão"
+                                IsEditable="True"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                            
                             <my:BtAcao x:Name="btFiltrar" Margin="10,0,0,0" Click="btFiltrar_Click"/>
 
-                            <!--<Button  
+                            <Button  
                                  Name="btGrafico" Margin="10,0,0,0" 
                                  Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                  ToolTip="Gráfico" Click="btGrafico_Click">
                                 <materialDesign:PackIcon Name="iconGrafico" Kind="ChartBar" Height="24" Width="24"/>
-                            </Button>-->
+                            </Button>
 
                             <!--<materialDesign:PopupBox
                                 Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
@@ -131,7 +147,7 @@
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding data, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="70" Width="Auto" HeaderTextAlignment="Left" TextAlignment="Left" HeaderTextWrapping="Wrap" Header="Data" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding parceiro}" Width="200" Header="Laboratório" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding fazenda}" Width="200" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
-                                <telerik:GridViewDataColumn DataMemberBinding="{Binding local}" Width="200" Header="Local" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding local}" Width="200" Header="Talhão" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding quadra}" Width="200" Header="Quadra" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding profundidade}" Width="Auto" Header="Profundidade" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding ph, StringFormat=\{0:N2\}}" HeaderTextAlignment="Right" TextAlignment="Right" Width="80" Header="pH" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
@@ -162,6 +178,51 @@
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding observacao}" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains" Width="300" Header="Observação" ShowFieldFilters="False" ShowFilterButton="False"/>
                             </telerik:RadGridView.Columns>
                         </my:PonGrid>
+
+                        <Grid Name="panelChart" Grid.Row="1" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <telerik:RadLegend Items="{Binding LegendItems, ElementName=chart}" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Collapsed">
+                                <telerik:RadLegend.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </telerik:RadLegend.ItemsPanel>
+                            </telerik:RadLegend>
+
+                            <telerik:RadCartesianChart x:Name="chart" Palette="Windows8" Grid.Row="1">
+                                <telerik:RadCartesianChart.HorizontalAxis>
+                                    <telerik:CategoricalAxis LabelFitMode="None" LabelRotationAngle="330" SmartLabelsMode="SmartStep" IsStepRecalculationOnZoomEnabled="True" >
+
+                                        <telerik:CategoricalAxis.LabelTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Vertical">
+                                                    <telerik:Label Content="{Binding}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </telerik:CategoricalAxis.LabelTemplate>
+
+                                    </telerik:CategoricalAxis>
+
+                                </telerik:RadCartesianChart.HorizontalAxis>
+
+                                <telerik:RadCartesianChart.VerticalAxis>
+                                    <telerik:LinearAxis LabelFormat="N0" Minimum="0" SmartLabelsMode="SmartStep" IsStepRecalculationOnZoomEnabled="True"/>
+                                </telerik:RadCartesianChart.VerticalAxis>
+
+                                <telerik:RadCartesianChart.Grid>
+                                    <telerik:CartesianChartGrid MajorLinesVisibility="Y"/>
+                                </telerik:RadCartesianChart.Grid>
+
+                                <telerik:RadCartesianChart.Behaviors>
+                                    <telerik:ChartSelectionBehavior DataPointSelectionMode="Single"/>
+                                    <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" DragMode="Pan"/>
+                                </telerik:RadCartesianChart.Behaviors>
+                            </telerik:RadCartesianChart>
+                        </Grid>
 
                         <materialDesign:Snackbar HorizontalAlignment="Stretch" x:Name="snackConsulta" Grid.Row="1"/>
                     </Grid>

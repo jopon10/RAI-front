@@ -37,7 +37,7 @@
                 Margin="0,5,0,0"
                 DisplayMemberPath="nome"
                 SelectedValuePath="id"
-                materialDesign:HintAssist.Hint="Local"
+                materialDesign:HintAssist.Hint="Talhão"
                 IsEditable="True"
                 SelectionChanged="cbLocais_SelectionChanged"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">

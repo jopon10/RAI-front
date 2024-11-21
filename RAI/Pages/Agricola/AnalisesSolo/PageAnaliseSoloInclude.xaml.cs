@@ -25,8 +25,8 @@ namespace RAI.Pages.Agricola.AnalisesSolo
         {
             btGravar.IsLoading(true);
 
-            parceiros = await CadastroAPI.GetParceirosAsync(tipo: "fornecedor", minimal: true);
-            locais = await CadastroAPI.GetLocaisAsync(minimal: true);
+            if (parceiros == null) parceiros = await CadastroAPI.GetParceirosAsync(tipo: "fornecedor", minimal: true);
+            if (locais == null) locais = await CadastroAPI.GetLocaisAsync(minimal: true);
 
             cbParceiros.ItemsSource = parceiros;
             cbLocais.ItemsSource = locais;

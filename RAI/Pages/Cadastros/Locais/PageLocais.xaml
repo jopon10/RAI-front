@@ -13,7 +13,7 @@
         <telerik:RadTabControl Name="tab" VerticalAlignment="Top" SelectionChanged="RadTabControl_SelectionChanged"
 				DisplayMemberPath="Content" DropDownDisplayMode="WhenNeeded" ScrollMode="Viewport" BorderThickness="0">
 
-            <telerik:RadTabItem Name="tabLocais" DropDownContent="Locais" Header="Locais" IsSelected="True">
+            <telerik:RadTabItem Name="tabLocais" DropDownContent="Talhões" Header="Talhões" IsSelected="True">
                 <telerik:RadTabItem.Content>
 
                     <Grid>

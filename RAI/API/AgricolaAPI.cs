@@ -27,13 +27,14 @@ namespace RAI.API
             }
         }
 
-        public static async Task<List<AnaliseSolo>> GetAnalisesSoloAsync(DateTime dataInicio, DateTime dataFim)
+        public static async Task<List<AnaliseSolo>> GetAnalisesSoloAsync(DateTime dataInicio, DateTime dataFim, Local local = null)
         {
             using (var client = Helper.getHttpClient())
             {
-                var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty, Encoding.UTF8);
+                var queryString = HttpUtility.ParseQueryString(string.Empty, Encoding.UTF8);
                 queryString["dataInicio"] = dataInicio.ToString("yyyy-MM-dd");
                 queryString["dataFim"] = dataFim.ToString("yyyy-MM-dd");
+                if(local != null) queryString["localId"] = local.id.ToString();
 
                 HttpResponseMessage response = await client.GetAsync($"analisessolos?{queryString.ToString()}");
 

@@ -112,7 +112,7 @@ namespace RAI.Pages.Cadastros.Locais
             this.textBox1.Style.LineColor = System.Drawing.Color.Silver;
             this.textBox1.Style.LineWidth = Telerik.Reporting.Drawing.Unit.Pixel(0.5D);
             this.textBox1.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox1.Value = "Local";
+            this.textBox1.Value = "Talhão";
             // 
             // textBox18
             // 
