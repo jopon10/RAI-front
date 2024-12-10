@@ -64,6 +64,10 @@ namespace RAI.ViewModel
         public string silte_unidade { get; set; }
         public string areia_unidade { get; set; }
 
+        public decimal? prnt { get; set; }
+        public string profundidade_incorporacao { get; set; }
+        public decimal? area { get; set; }
+
         public decimal sb { get => k.GetValueOrDefault() + ca.GetValueOrDefault() + mg.GetValueOrDefault(); }
         public decimal ctc { get => h_al.GetValueOrDefault() + sb; }
         public decimal t { get => sb + al.GetValueOrDefault(); }
@@ -72,5 +76,18 @@ namespace RAI.ViewModel
         public decimal ca_ctc { get => ctc > 0 ? ca.GetValueOrDefault() / ctc * 100 : 0; }
         public decimal mg_ctc { get => ctc > 0 ? mg.GetValueOrDefault() / ctc * 100 : 0; }
         public decimal k_ctc { get => ctc > 0 ? k.GetValueOrDefault() / ctc * 100 : 0; }
+
+        public decimal vd
+        {
+            get
+            {
+                if (ctc < 5) return 85;
+                else if (ctc > 5 && ctc < 7) return 80;
+                else if (ctc > 7 && ctc < 9) return 75;
+                else if (ctc > 9) return 70;
+
+                return 0;
+            }
+        }
     }
 }

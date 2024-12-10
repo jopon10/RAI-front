@@ -186,6 +186,9 @@
     <Compile Include="Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.xaml.cs">
       <DependentUpon>PageAnaliseSoloInclude.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Agricola\AnalisesSolo\PageCorrecaoCalagemInclude.xaml.cs">
+      <DependentUpon>PageCorrecaoCalagemInclude.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Cadastros\Fazendas\PageFazendaInclude.xaml.cs">
       <DependentUpon>PageFazendaInclude.xaml</DependentUpon>
     </Compile>
@@ -288,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Agricola\AnalisesSolo\PageCorrecaoCalagemInclude.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

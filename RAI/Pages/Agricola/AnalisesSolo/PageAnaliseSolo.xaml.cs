@@ -142,6 +142,28 @@ namespace RAI.Pages.Agricola.AnalisesSolo
             }
         }
 
+        private void btCalagem_CustomClick(object sender, RoutedEventArgs e)
+        {
+            if (sender == null) return;
+
+            ret.Visibility = Visibility.Visible;
+
+            var analise = sender as AnaliseSolo;
+            grid.SelectedItem = analise;
+
+            var window = new PageCorrecaoCalagemInclude();
+            window.analise = analise;
+            window.ShowDialog();
+
+            if (window.gravou)
+            {
+                grid.Rebind();
+                Helper.ShowSnack(snack, "Salvo com sucesso");
+            }
+
+            ret.Visibility = Visibility.Collapsed;
+        }
+
         private async void btFiltrar_Click(object sender, RoutedEventArgs e)
         {
             if (d1.SelectedDate == null)

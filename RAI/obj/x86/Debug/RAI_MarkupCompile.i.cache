@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Projetos\RAI-front\RAI\App.xaml
-20205032520
+211104183338
 
-691227748212
+70-118078522
 421438004241
-Controls\BtAcao.xaml;Controls\BtGravar.xaml;Controls\PonDialog.xaml;Pages\Agricola\AnalisesSolo\PageAnaliseSolo.xaml;Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.xaml;Pages\Cadastros\Fazendas\PageFazendaInclude.xaml;Pages\Cadastros\Fazendas\PageFazendas.xaml;Pages\Cadastros\Parceiros\PageParceiroInclude.xaml;Pages\Cadastros\Parceiros\PageParceiros.xaml;Pages\Cadastros\Proprietarios\PageProprietarioInclude.xaml;Pages\Cadastros\Proprietarios\PageProprietarios.xaml;Pages\Cadastros\Usuarios\PageUsuarioInclude.xaml;Pages\Cadastros\Usuarios\PageUsuarios.xaml;Pages\Cadastros\Locais\PageLocais.xaml;Pages\Cadastros\Locais\PageLocalInclude.xaml;Pages\Cadastros\Locais\PageLocalMapeamento.xaml;Pages\Inicio\PageMapaFazendas.xaml;Pages\PageLogin.xaml;Pages\PageMenu.xaml;Pages\PageReportViewer.xaml;
+Controls\BtAcao.xaml;Controls\BtGravar.xaml;Controls\PonDialog.xaml;Pages\Agricola\AnalisesSolo\PageAnaliseSolo.xaml;Pages\Agricola\AnalisesSolo\PageAnaliseSoloInclude.xaml;Pages\Agricola\AnalisesSolo\PageCorrecaoCalagemInclude.xaml;Pages\Cadastros\Fazendas\PageFazendaInclude.xaml;Pages\Cadastros\Fazendas\PageFazendas.xaml;Pages\Cadastros\Parceiros\PageParceiroInclude.xaml;Pages\Cadastros\Parceiros\PageParceiros.xaml;Pages\Cadastros\Proprietarios\PageProprietarioInclude.xaml;Pages\Cadastros\Proprietarios\PageProprietarios.xaml;Pages\Cadastros\Usuarios\PageUsuarioInclude.xaml;Pages\Cadastros\Usuarios\PageUsuarios.xaml;Pages\Cadastros\Locais\PageLocais.xaml;Pages\Cadastros\Locais\PageLocalInclude.xaml;Pages\Cadastros\Locais\PageLocalMapeamento.xaml;Pages\Inicio\PageMapaFazendas.xaml;Pages\PageLogin.xaml;Pages\PageMenu.xaml;Pages\PageReportViewer.xaml;
 
-False
+True
 

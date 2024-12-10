@@ -100,6 +100,23 @@ namespace RAI.API
             }
         }
 
+        public static async Task<AnaliseSolo> PutAnaliseSoloCalagemAsync(AnaliseSolo analise)
+        {
+            using (var client = Helper.getHttpClient())
+            {
+                HttpResponseMessage response = await client.PutAsJsonAsync($"analisessoloscalagem/{analise.id}", analise);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<AnaliseSolo>();
+                }
+                else
+                {
+                    throw new Exception((await response.Content.ReadAsAsync<Error>()).error);
+                }
+            }
+        }
+
         public static async Task<bool> DeleteAnaliseSoloAsync(int analiseId)
         {
             using (var client = Helper.getHttpClient())

@@ -34,7 +34,9 @@
                         <my:PonGrid x:Name="grid" Grid.Row="1">
                             <telerik:RadGridView.Columns>
                                 <my:ButtonColumnEdit Header="" MinWidth="60" MaxWidth="60" CustomClick="ButtonColumnEdit_CustomClick"/>
-
+                                <my:ButtonColumnShow Header="" MinWidth="60" MaxWidth="60" CustomClick="btCalagem_CustomClick" ToolTip="Calagem" IconKind="AlphabetCCircle" CustomCommand="VisibleCalagem"/>
+                                <my:ButtonColumnShow Header="" MinWidth="60" MaxWidth="60" CustomClick="btCalagem_CustomClick" ToolTip="Gessagem" IconKind="AlphabetGCircle" CustomCommand="VisibleGessagem"/>
+                                
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding data, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="70" Width="Auto" HeaderTextAlignment="Left" TextAlignment="Left" HeaderTextWrapping="Wrap" Header="Data" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="StartsWith"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding parceiro}" Width="200" Header="Laboratório" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>
                                 <telerik:GridViewDataColumn DataMemberBinding="{Binding fazenda}" Width="200" Header="Fazenda" ShowFieldFilters="False" ShowFilterButton="False" EnableDistinctValuesFiltering="True" DistinctValuesSearchMode="Contains"/>

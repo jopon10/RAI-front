@@ -49,6 +49,24 @@ namespace RAI.Controls
                         toolTip = "Mapear";
                     }
                 }
+
+                if (CustomCommand == "VisibleCalagem")
+                {
+                    var analise = dataItem as ViewModel.AnaliseSolo;
+                    if (analise.profundidade == "0-20 cm" && analise.ca_ctc < 60 && analise.mg_ctc < 20)
+                        VisibleIcon = true;
+                    else
+                        VisibleIcon = false;
+                }
+
+                if (CustomCommand == "VisibleGessagem")
+                {
+                    var analise = dataItem as ViewModel.AnaliseSolo;
+                    if (analise.profundidade == "20-40 cm" && analise.al.GetValueOrDefault() > 0.5M && analise.ca.GetValueOrDefault() < 0.5M && analise.m > 30)
+                        VisibleIcon = true;
+                    else
+                        VisibleIcon = false;
+                }
             }
             else
             {
