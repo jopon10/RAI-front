@@ -52,7 +52,7 @@ namespace RAI.Pages.Agricola.AnalisesSolo
             movimentos.Add(new ProdutoMovimento { id = 0, nomeProduto = "pH", quantidade = analise.ph, extratores = new List<Unidade> { new Unidade { sigla = "H2O" }, new Unidade { sigla = "CaCl2" } }, unidades_analise_solo = new List<Unidade> { new Unidade { sigla = "-" } }, extrator = "CaCl2", unidade = "-" });
             movimentos.Add(new ProdutoMovimento { id = 1, nomeProduto = "M.O.", quantidade = analise.mo, extratores = new List<Unidade> { new Unidade { sigla = "Cálculo" } }, unidades_analise_solo = new List<Unidade> { new Unidade { sigla = "g/kg" }, new Unidade { sigla = "g/dm3" }, new Unidade { sigla = "%" }, new Unidade { sigla = "dag/kg" }, new Unidade { sigla = "dag/dm3" } }, extrator = "Cálculo", unidade = "%" });
             movimentos.Add(new ProdutoMovimento { id = 2, nomeProduto = "P", quantidade = analise.p, extratores = new List<Unidade> { new Unidade { sigla = "Resina" }, new Unidade { sigla = "Mehlich 1" } }, unidades_analise_solo = new List<Unidade> { new Unidade { sigla = "mg/dm3" } }, extrator = "Resina", unidade = "mg/dm3" });
-            movimentos.Add(new ProdutoMovimento { id = 3, nomeProduto = "K", quantidade = analise.k, extratores = new List<Unidade> { new Unidade { sigla = "Resina" }, new Unidade { sigla = "Mehlich 1" } }, unidades_analise_solo = new List<Unidade> { new Unidade { sigla = "mmolc/dm3" }, new Unidade { sigla = "cmolc/dm3" }, new Unidade { sigla = "mg/dm3" } }, extrator = "Resina", unidade = "mmolc/dm3" });
+            movimentos.Add(new ProdutoMovimento { id = 3, nomeProduto = "K", quantidade = analise.k, extratores = new List<Unidade> { new Unidade { sigla = "Resina" }, new Unidade { sigla = "Mehlich 1" } }, unidades_analise_solo = new List<Unidade> { new Unidade { sigla = "mmolc/dm3" }, new Unidade { sigla = "cmolc/dm3" }, new Unidade { sigla = "mg/dm3" } }, extrator = "Resina", unidade = "cmolc/dm3" });
             movimentos.Add(new ProdutoMovimento { id = 4, nomeProduto = "Ca", quantidade = analise.ca, extratores = new List<Unidade> { new Unidade { sigla = "KCl" } }, unidades_analise_solo = new List<Unidade> { new Unidade { sigla = "mmolc/dm3" }, new Unidade { sigla = "cmolc/dm3" } }, extrator = "KCl", unidade = "cmolc/dm3" });
             movimentos.Add(new ProdutoMovimento { id = 5, nomeProduto = "Mg", quantidade = analise.mg, extratores = new List<Unidade> { new Unidade { sigla = "KCl" } }, unidades_analise_solo = new List<Unidade> { new Unidade { sigla = "mmolc/dm3" }, new Unidade { sigla = "cmolc/dm3" } }, extrator = "KCl", unidade = "cmolc/dm3" });
             movimentos.Add(new ProdutoMovimento { id = 6, nomeProduto = "Na", quantidade = analise.na, extratores = new List<Unidade> { new Unidade { sigla = "Mehlich" } }, unidades_analise_solo = new List<Unidade> { new Unidade { sigla = "mmolc/dm3" }, new Unidade { sigla = "cmolc/dm3" } }, extrator = "Mehlich", unidade = "cmolc/dm3" });
@@ -119,7 +119,7 @@ namespace RAI.Pages.Agricola.AnalisesSolo
             {
                 btGravar.IsLoading(true);
 
-                var parceiro = cbParceiros.SelectedItem as ViewModel.Parceiro;
+                var parceiro = cbParceiros.SelectedItem as Parceiro;
                 var local = cbLocais.SelectedItem as Local;
 
                 analise.parceiro_id = parceiro.id;

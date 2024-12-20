@@ -22,7 +22,10 @@ namespace RAI.Pages.Agricola.AnalisesSolo
 
             txtPRNT.TextChanged += CalculoNC;
             cbProfundidade.SelectionChanged += cbProfundidade_SelectionChanged;
-            txtArea.TextChanged += txtArea_TextChanged;
+            itemAreaTotal.Selected += ListBoxItem_Selected;
+            itemAreaTotal.Unselected += ListBoxItem_Selected;
+            itemFaixa.Selected += ListBoxItem_Selected;
+            itemFaixa.Unselected += ListBoxItem_Selected;
 
             txtData.Text = analise.data.ToShortDateString();
             txtLocal.Text = analise.local;
@@ -38,7 +41,6 @@ namespace RAI.Pages.Agricola.AnalisesSolo
 
             if (analise.prnt != null) txtPRNT.Text = analise.prnt.GetValueOrDefault().ToString("N2");
             cbProfundidade.Text = analise.profundidade_incorporacao;
-            if (analise.area != null) txtArea.Text = analise.area.GetValueOrDefault().ToString("N2");
 
             btGravar.IsLoading(false);
         }
@@ -46,7 +48,6 @@ namespace RAI.Pages.Agricola.AnalisesSolo
         private void CalculoDC()
         {
             if (cbProfundidade.SelectedItem == null) return;
-            if (txtArea.Text.Trim().Length == 0 || !txtArea.Text.IsNumeric()) return;
             if (txtNC.Text.Trim().Length == 0 || !txtNC.Text.IsNumeric()) return;
 
             decimal profundidade = 0;
@@ -71,7 +72,7 @@ namespace RAI.Pages.Agricola.AnalisesSolo
                     break;
             }
 
-            txtDC.Text = (txtNC.Text.ToDecimal().GetValueOrDefault() * profundidade * txtArea.Text.ToDecimal().GetValueOrDefault()).ToString("N2");
+            txtDC.Text = (txtNC.Text.ToDecimal().GetValueOrDefault() * profundidade * (itemAreaTotal.IsSelected ? 1 : 0.5M)).ToString("N2");
         }
 
         private void CalculoNC(object sender, TextChangedEventArgs e)
@@ -80,7 +81,7 @@ namespace RAI.Pages.Agricola.AnalisesSolo
 
             var prnt = txtPRNT.Text.ToDecimal().GetValueOrDefault();
 
-            txtNC.Text = prnt > 0 ? $"{((analise.vd - analise.v) * analise.ctc / txtPRNT.Text.ToDecimal().GetValueOrDefault()).ToString("N2")} ton/ha" : "";
+            txtNC.Text = prnt > 0 ? $"{((analise.vd - analise.v) * analise.ctc / txtPRNT.Text.ToDecimal().GetValueOrDefault()).ToString("N2")}" : "";
 
             CalculoDC();
         }
@@ -90,8 +91,25 @@ namespace RAI.Pages.Agricola.AnalisesSolo
             CalculoDC();
         }
 
-        private void txtArea_TextChanged(object sender, TextChangedEventArgs e)
+        private void item_Selected(object sender, RoutedEventArgs e)
         {
+            CalculoDC();
+        }
+
+        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+            if (sender == null) return;
+
+            var item = sender as ListBoxItem;
+            if (item.Name == "itemAreaTotal" && item.IsSelected)
+                itemFaixa.IsSelected = false;
+            else if (item.Name == "itemAreaTotal" && !item.IsSelected)
+                itemFaixa.IsSelected = true;
+            else if (item.Name == "itemFaixa" && item.IsSelected)
+                itemAreaTotal.IsSelected = false;
+            else if (item.Name == "itemFaixa" && !item.IsSelected)
+                itemAreaTotal.IsSelected = true;
+
             CalculoDC();
         }
 
@@ -103,7 +121,7 @@ namespace RAI.Pages.Agricola.AnalisesSolo
 
                 analise.prnt = txtPRNT.Text.ToDecimal();
                 analise.profundidade_incorporacao = cbProfundidade.Text;
-                analise.area = txtArea.Text.ToDecimal();
+                //analise.area = txtArea.Text.ToDecimal();
 
                 await AgricolaAPI.PutAnaliseSoloCalagemAsync(analise);
 

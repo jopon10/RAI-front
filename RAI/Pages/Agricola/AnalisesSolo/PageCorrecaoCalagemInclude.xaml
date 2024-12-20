@@ -77,7 +77,11 @@
                     </ComboBox.ItemsPanel>
                 </ComboBox>
 
-                <TextBox x:Name="txtArea" materialDesign:HintAssist.Hint="Área Total / Faixa de Aplicação" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <ListBox Style="{StaticResource MaterialDesignFilterChipPrimaryListBox}" HorizontalAlignment="Center" Margin="0,5,0,0">
+                    <ListBoxItem x:Name="itemAreaTotal" Content="Área Total" IsSelected="True" Margin="0,0,5,0" Selected="item_Selected"/>
+                    <ListBoxItem x:Name="itemFaixa" Content="Faixa de Aplicação"/>
+                </ListBox>
+                
                 <TextBox x:Name="txtNC" materialDesign:HintAssist.Hint="NC" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" IsReadOnly="True"/>
                 <TextBox x:Name="txtDC" materialDesign:HintAssist.Hint="DC" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" IsReadOnly="True"/>
             </StackPanel>

@@ -83,7 +83,25 @@
             <telerik:RadTabItem Name="tabConsulta" DropDownContent="Consulta" Header="Consulta">
                 <telerik:RadTabItem.Content>
 
-                    <Grid>
+                    <Grid x:Name="GridLayoutChart">
+                        <Grid.Resources>
+                            <DataTemplate x:Key="trackBallTemplate">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding DataPoint.CategoryComplete}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding DataPoint.ValueTotal}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding DataPoint.Value, StringFormat=N2}"/>
+                                </StackPanel>
+                            </DataTemplate>
+
+                            <DataTemplate x:Key="trackBallTemplate2">
+                                <TextBlock Text="{Binding DataPoint.Value, StringFormat=N2}"/>
+                            </DataTemplate>
+
+                            <DataTemplate x:Key="pointTemplate">
+                                <Rectangle Fill="Black" Width="4" Height="4"/>
+                            </DataTemplate>
+                        </Grid.Resources>
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="*"/>
@@ -187,7 +205,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <telerik:RadLegend Items="{Binding LegendItems, ElementName=chart}" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Collapsed">
+                            <telerik:RadLegend Items="{Binding LegendItems, ElementName=chart}" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible">
                                 <telerik:RadLegend.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Orientation="Horizontal"/>
@@ -195,7 +213,7 @@
                                 </telerik:RadLegend.ItemsPanel>
                             </telerik:RadLegend>
 
-                            <telerik:RadCartesianChart x:Name="chart" Palette="Windows8" Grid.Row="1">
+                            <telerik:RadCartesianChart x:Name="chart" Grid.Row="1">
                                 <telerik:RadCartesianChart.HorizontalAxis>
                                     <telerik:CategoricalAxis LabelFitMode="None" LabelRotationAngle="330" SmartLabelsMode="SmartStep" IsStepRecalculationOnZoomEnabled="True" >
 
@@ -206,9 +224,7 @@
                                                 </StackPanel>
                                             </DataTemplate>
                                         </telerik:CategoricalAxis.LabelTemplate>
-
                                     </telerik:CategoricalAxis>
-
                                 </telerik:RadCartesianChart.HorizontalAxis>
 
                                 <telerik:RadCartesianChart.VerticalAxis>
@@ -222,6 +238,7 @@
                                 <telerik:RadCartesianChart.Behaviors>
                                     <telerik:ChartSelectionBehavior DataPointSelectionMode="Single"/>
                                     <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" DragMode="Pan"/>
+                                    <telerik:ChartTrackBallBehavior/>
                                 </telerik:RadCartesianChart.Behaviors>
                             </telerik:RadCartesianChart>
                         </Grid>
